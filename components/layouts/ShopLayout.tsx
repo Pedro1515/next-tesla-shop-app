@@ -1,6 +1,6 @@
 import Head from "next/head"
 import { PropsWithChildren } from "react"
-import { Navbar } from '../ui/Navbar';
+import { Navbar, SideMenu } from '../ui';
 import { Box } from '@mui/material';
 
 interface Props extends PropsWithChildren {
@@ -24,7 +24,12 @@ export const ShopLayout = ({ pageTitle, pageDescription, imageFullUrl, children 
         }
       </Head>
 
-      <Navbar />
+      <nav>
+        <Navbar />
+      </nav>
+
+      <SideMenu />
+
       <main 
         style={{
           margin: '0 auto',

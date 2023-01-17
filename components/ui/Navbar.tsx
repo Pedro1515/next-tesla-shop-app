@@ -6,9 +6,7 @@ import { SearchOutlined } from '@mui/icons-material';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 
-interface Props {}
-
-export const Navbar = ({}: Props) => {
+export const Navbar = () => {
   return (
     <AppBar
       sx={{
