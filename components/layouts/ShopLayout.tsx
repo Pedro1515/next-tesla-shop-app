@@ -34,7 +34,7 @@ export const ShopLayout = ({ pageTitle, pageDescription, imageFullUrl, children 
         style={{
           margin: '0 auto',
           width: '100%',
-          maxWidth: '1300px',
+          maxWidth: '1400px',
           padding: '80px 20px',
           flex: 1,
         }}

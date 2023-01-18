@@ -27,7 +27,7 @@ const Custom404Page = () => {
         <Typography 
           marginLeft={1} 
         >
-            No hay contenido para mostrar segun esta busqueda
+            No hay contenido para mostrar según esta búsqueda
         </Typography>  
       </Box>
     </ShopLayout>
