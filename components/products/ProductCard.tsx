@@ -14,8 +14,8 @@ export const ProductCard = ({product}: Props) => {
     ? '/products/'+product.images[1] 
     : '/products/'+product.images[0]
 
-  const radius = '20px'
-  const radiusButtonAdd = '0 0 18px 18px'
+  const radius = '15px'
+  const radiusButtonAdd = '0 0 14px 14px'
 
   return (
     <Grid item xs={12} sm={6} md={4} key={product.slug}>
