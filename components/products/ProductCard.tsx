@@ -1,8 +1,9 @@
-import { Grid, CardActionArea, CardMedia, Box, Typography, Button } from '@mui/material';
-
-import { IProduct } from "@/interfaces"
 import { useState } from 'react';
 import Link from 'next/link';
+
+import { Grid, CardActionArea, CardMedia, Box, Typography } from '@mui/material';
+
+import { IProduct } from "@/interfaces"
 import { SizeSelector } from './SizeSelector';
 
 interface Props {
@@ -16,8 +17,7 @@ export const ProductCard = ({product}: Props) => {
         ? '/products/'+product.images[1] 
         : '/products/'+product.images[0]
 
-    const radius = '15px'
-    const radiusButtonAdd = '0 0 14px 14px'
+    const radius = '5px'
 
     return (
         <Grid item xs={12} sm={6} md={4} key={product.slug}>
@@ -58,7 +58,7 @@ const BoxAddToCart = (product: IProduct) => {
                 height: 70,
                 position: 'absolute', 
                 bottom: 0, 
-                borderRadius: '0 0 14px 14px',
+                borderRadius: '0 0 4px 4px',
                 backgroundColor: 'primary.main',
                 width: '100%',
                 color: 'white',
