@@ -1,8 +1,9 @@
-import { Slide } from "react-slideshow-image"
 import 'react-slideshow-image/dist/styles.css'
+import styles from './ProductSlideshow.module.css'
+
+import { Slide } from "react-slideshow-image"
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import styles from './ProductSlideshow.module.css'
 import { IconButton } from "@mui/material";
 
 interface Props {
@@ -15,7 +16,7 @@ export const ProductSlideshow = ({ images }: Props) => {
             easing="ease"
             duration={ 999999 }
             indicators
-            // canSwipe={false}
+            transitionDuration={ 300 }
             nextArrow={ 
                 <IconButton 
                     size="small" 

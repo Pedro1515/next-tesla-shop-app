@@ -3,6 +3,7 @@ import { Grid, CardActionArea, CardMedia, Box, Typography, Button } from '@mui/m
 import { IProduct } from "@/interfaces"
 import { useState } from 'react';
 import Link from 'next/link';
+import { SizeSelector } from './SizeSelector';
 
 interface Props {
   product: IProduct
@@ -37,25 +38,44 @@ export const ProductCard = ({product}: Props) => {
                         />
                     </CardActionArea>
                 </Link>
-                {isHover && (
-                    <Button 
-                        color="primary"
-                        sx={{
-                            height: 70,
-                            position: 'absolute', 
-                            bottom: 0, 
-                            borderRadius: radiusButtonAdd,
-                        }}
-                        fullWidth
-                    >
-                      Agregar al carrito +
-                    </Button>
-                )}
+                {isHover && <BoxAddToCart {...product}/>}
             </div>
             <Box sx={{ mt: 1 }}>
                 <Typography fontWeight={600}>{product.title}</Typography>
                 <Typography fontWeight={600}>{`$${product.price}`}</Typography>
             </Box>
         </Grid>
+    )
+}
+
+const BoxAddToCart = (product: IProduct) => {
+    const [isHover, setIsHover] = useState(false)
+
+    return (
+        <Box 
+            color="primary"
+            sx={{
+                height: 70,
+                position: 'absolute', 
+                bottom: 0, 
+                borderRadius: '0 0 14px 14px',
+                backgroundColor: 'primary.main',
+                width: '100%',
+                color: 'white',
+            }}
+            fontWeight={600}
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            fontSize={14}
+            onMouseEnter={() => setIsHover(true)}
+            onMouseLeave={() => setIsHover(false)}
+            //TODO: paddingX={2}
+        >
+            {isHover 
+                ? <SizeSelector variant='slim' sizes={ product.sizes }/>
+                : 'Agregar al carrito +'
+            }
+        </Box>
     )
 }
