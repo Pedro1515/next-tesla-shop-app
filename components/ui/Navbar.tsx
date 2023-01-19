@@ -35,17 +35,17 @@ export const Navbar = () => {
         >
           <NextLink href='/category/men' legacyBehavior passHref>
             <Link underline="none">
-              <Button>Hombres</Button>
+              <Button color="secondary">Hombres</Button>
             </Link>
           </NextLink>
           <NextLink href='/category/women' legacyBehavior passHref>
             <Link underline="none">
-              <Button>Mujeres</Button>
+              <Button color="secondary">Mujeres</Button>
             </Link>
           </NextLink>
           <NextLink href='/category/kids' legacyBehavior passHref>
             <Link underline="none">
-              <Button>Niños</Button>
+              <Button color="secondary">Niños</Button>
             </Link>
           </NextLink>
         </Box>
@@ -56,7 +56,7 @@ export const Navbar = () => {
           <NextLink href='/cart' legacyBehavior passHref>
             <Link sx={{ margin: '0 0.5rem' }}>
               <IconButton>
-                <Badge badgeContent={4} color="secondary">
+                <Badge badgeContent={4} color="primary">
                   <ShoppingCartOutlinedIcon />
                 </Badge>
               </IconButton>

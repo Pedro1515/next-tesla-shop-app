@@ -1,7 +1,8 @@
-import { Grid, CardActionArea, CardMedia, Box, Typography, CardContent, Button } from '@mui/material';
+import { Grid, CardActionArea, CardMedia, Box, Typography, Button } from '@mui/material';
 
 import { IProduct } from "@/interfaces"
 import { useState } from 'react';
+import Link from 'next/link';
 
 interface Props {
   product: IProduct
@@ -24,30 +25,28 @@ export const ProductCard = ({product}: Props) => {
         onMouseEnter={() => setIsHover(true)}
         onMouseLeave={() => setIsHover(false)}
       >
-        <CardActionArea sx={{ borderRadius: radius }}>
-          <CardMedia
-            component="img"
-            image={productImage}
-            alt={product.title}
-            sx={{
-              borderRadius: radius,
-            }}
-          />
-        </CardActionArea>
+        <Link href={`/product/slug`} prefetch={ false } legacyBehavior>
+          <CardActionArea sx={{ borderRadius: radius }}>
+            <CardMedia
+              component="img"
+              image={productImage}
+              alt={product.title}
+              sx={{
+                borderRadius: radius,
+              }}
+            />
+          </CardActionArea>
+        </Link>
         {isHover && (
           <Button 
-            sx={{ 
-              backgroundColor: 'white', 
-              '&:hover': {
-                backgroundColor: '#f2f2f2', 
-              },
+            color="primary"
+            sx={{
               height: 70,
               position: 'absolute', 
               bottom: 0, 
-              width: '100%',
               borderRadius: radiusButtonAdd,
-              boxShadow: '0px 2px 2px rgb(0 0 0 / 9%)', 
             }}
+            fullWidth
           >
             Agregar al carrito +
           </Button>

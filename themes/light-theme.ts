@@ -1,5 +1,7 @@
 import { createTheme } from "@mui/material/styles";
 
+const primaryHover = "#f2f2f2";
+
 export const lightTheme = createTheme({
   palette: {
     mode: "light",
@@ -7,7 +9,12 @@ export const lightTheme = createTheme({
       main: "#1E1E1E",
     },
     secondary: {
-      main: "#3A64D8",
+      main: "#FFF",
+    },
+  },
+  typography: {
+    subtitle2: {
+      fontWeight: 600,
     },
   },
   components: {
@@ -54,6 +61,16 @@ export const lightTheme = createTheme({
       },
     },
 
+    MuiIconButton: {
+      styleOverrides: {
+        root: {
+          ":hover": {
+            backgroundColor: primaryHover,
+          },
+        },
+      },
+    },
+
     MuiButton: {
       defaultProps: {
         variant: "contained",
@@ -61,16 +78,26 @@ export const lightTheme = createTheme({
         disableElevation: true,
       },
       styleOverrides: {
-        root: {
+        root: ({ ownerState }) => ({
+          ...stylesByState(ownerState),
           textTransform: "none",
           boxShadow: "none",
-          borderRadius: 10,
+          borderRadius: 5,
+          padding: "6px 15px",
           fontWeight: 600,
-          color: "#292C31",
-          ":hover": {
-            backgroundColor: "rgba(0,0,0,0.05)",
-            transition: "all 0.3s ease-in-out",
-          },
+        }),
+      },
+    },
+
+    MuiChip: {
+      defaultProps: {
+        color: "error",
+        variant: "outlined",
+      },
+      styleOverrides: {
+        root: {
+          borderRadius: 5,
+          fontWeight: 600,
         },
       },
     },
@@ -88,3 +115,16 @@ export const lightTheme = createTheme({
     },
   },
 });
+
+const stylesByState = ({ variant, color }: any) => {
+  if (variant === "contained" && color === "secondary") {
+    return {
+      color: "#292C31",
+      ":hover": {
+        backgroundColor: primaryHover,
+      },
+    };
+  }
+
+  return {};
+};
