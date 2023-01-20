@@ -1,5 +1,7 @@
-import { AppBar, IconButton, Toolbar, Typography, Badge, Button } from '@mui/material';
+import { useRouter } from 'next/router';
 import NextLink from 'next/link';
+
+import { AppBar, IconButton, Toolbar, Typography, Badge, Button } from '@mui/material';
 import Link from '@mui/material/Link';
 import { Box } from '@mui/material';
 import { SearchOutlined } from '@mui/icons-material';
@@ -7,6 +9,8 @@ import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 
 export const Navbar = () => {
+    const { pathname } = useRouter()
+    
     return (
         <AppBar
             sx={{
@@ -55,7 +59,14 @@ export const Navbar = () => {
                         <SearchOutlined />
                     </IconButton>
                     {/* Cart */}
-                    <NextLink href='/cart' legacyBehavior passHref>
+                    <NextLink 
+                        href={{
+                            pathname: '/cart',
+                            query: { prev: pathname },
+                        }}
+                        legacyBehavior 
+                        passHref
+                    >
                         <Link sx={{ margin: '0 0.5rem' }}>
                             <IconButton>
                                 <Badge badgeContent={4} color="primary">

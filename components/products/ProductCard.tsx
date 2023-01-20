@@ -60,6 +60,7 @@ const BoxAddToCart = (product: IProduct) => {
                 bottom: 0, 
                 borderRadius: '0 0 4px 4px',
                 backgroundColor: 'primary.main',
+                boxShadow: "0 8px 16px 0 rgba(0,0,0,.16)",
                 width: '100%',
                 color: 'white',
             }}

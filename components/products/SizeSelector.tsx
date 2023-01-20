@@ -52,6 +52,7 @@ const ButtonContainer = ({ size, sizeSelected, onSelect }: ButtonVariantProps) =
             mr: 1,
             mb: 1,
             backgroundColor: sizeSelected === size ? 'secondary.light' : 'transparent',
+            textDecoration: sizeSelected === size ? 'underline' : 'none',
         }}
         color="secondary"
         onClick={() => onSelect(size)}

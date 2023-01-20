@@ -26,7 +26,7 @@ const ProductPage = () => {
                     <Typography variant="h1" component="h1">{ product.title }</Typography>
                     <Typography variant="subtitle1" component="h2">{ `$${product.price}` }</Typography>
 
-                    <Box display="flex" flexDirection="column" maxWidth={350}>
+                    <Box width={ 350 } display="flex" flexDirection="column">
                         {/* Quantity */}
                         <Box sx={{ mt: 2 }}>
                             <Typography variant="subtitle2">Cantidad</Typography>
@@ -41,12 +41,12 @@ const ProductPage = () => {
                         </Button>
                         {/* <Chip sx={{ height: 40 }} label="No hay disponibles"/> */}
 
-                        {/* Description */}
-                        <Box sx={{ mt: 3 }}>
-                            <Typography variant="subtitle2" padding={'10px 0'} >Descripción</Typography>
-                            <Typography variant="body2">{ product.description }</Typography>
-                        </Box>
 
+                    </Box>
+                    {/* Description */}
+                    <Box sx={{ mt: 3 }}>
+                        <Typography variant="subtitle2" padding={'10px 0'} >Descripción</Typography>
+                        <Typography variant="body2">{ product.description }</Typography>
                     </Box>
 
                 </Grid>

@@ -1,10 +1,10 @@
 import { AddCircleOutline, RemoveCircleOutline } from "@mui/icons-material"
 import { Box, IconButton, Typography } from '@mui/material';
-import { useState } from "react"
+import { useState, PropsWithChildren } from 'react';
 
-interface Props {}
+interface Props extends PropsWithChildren {}
 
-export const ItemCounter = ({}: Props) => {
+export const ItemCounter = ({ children }: Props) => {
     const [counter, setCounter] = useState(1)
 
     const onAdd = () => {
@@ -32,6 +32,7 @@ export const ItemCounter = ({}: Props) => {
             > 
                 <AddCircleOutline />
             </IconButton>
+            {children}
         </Box>
     )
 }
