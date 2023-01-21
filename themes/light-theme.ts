@@ -1,6 +1,7 @@
 import { createTheme } from "@mui/material/styles";
 
 const primaryHover = "#f2f2f2";
+const radius = "3px";
 
 export const lightTheme = createTheme({
     palette: {
@@ -83,7 +84,7 @@ export const lightTheme = createTheme({
                     ...stylesByState(ownerState),
                     textTransform: "none",
                     boxShadow: "none",
-                    borderRadius: 5,
+                    borderRadius: radius,
                     padding: "6px 15px",
                     fontWeight: 600,
                 }),
@@ -97,9 +98,17 @@ export const lightTheme = createTheme({
             },
             styleOverrides: {
                 root: {
-                    borderRadius: 5,
+                    borderRadius: radius,
                     fontWeight: 600,
                 },
+            },
+        },
+
+        MuiTextField: {
+            defaultProps: {
+                size: "small",
+                variant: "filled",
+                fullWidth: true,
             },
         },
 
@@ -110,7 +119,7 @@ export const lightTheme = createTheme({
             styleOverrides: {
                 root: {
                     boxShadow: "0 8px 16px 0 rgba(0,0,0,.16)",
-                    borderRadius: "5px",
+                    borderRadius: radius,
                 },
             },
         },

@@ -1,30 +1,42 @@
-import { PropsWithChildren } from "react"
-import Head from "next/head"
+import { PropsWithChildren } from "react";
+import Head from "next/head";
 
-import { Box } from '@mui/material';
+import { Box } from "@mui/material";
 
-import { Navbar, SideMenu } from '../ui';
+import { Navbar, SideMenu } from "../ui";
 
 interface Props extends PropsWithChildren {
-  pageTitle: string,
-  pageDescription: string,
-  imageFullUrl?: string,
-  containerWidth?: number,
+    pageTitle: string;
+    pageDescription: string;
+    imageFullUrl?: string;
+    maxWidth?:
+        | {
+              xs?: number;
+              sm?: number;
+              md?: number;
+              lg?: number;
+              xl?: number;
+          }
+        | number;
 }
 
-export const ShopLayout = ({ pageTitle, pageDescription, imageFullUrl, containerWidth, children }: Props) => {
+export const ShopLayout = ({
+    pageTitle,
+    pageDescription,
+    imageFullUrl,
+    children,
+    maxWidth,
+}: Props) => {
     return (
-        <Box display='flex' height='100vh' flexDirection='column'>
+        <Box display="flex" height="100vh" flexDirection="column">
             <Head>
                 <title>{pageTitle}</title>
                 <meta name="description" content={pageDescription} />
                 <meta name="og:title" content={pageTitle} />
                 <meta name="og:description" content={pageDescription} />
-                {
-                    imageFullUrl && (
-                        <meta name="og:image" content={imageFullUrl} />
-                    )
-                }
+                {imageFullUrl && (
+                    <meta name="og:image" content={imageFullUrl} />
+                )}
             </Head>
 
             <nav>
@@ -33,21 +45,20 @@ export const ShopLayout = ({ pageTitle, pageDescription, imageFullUrl, container
 
             <SideMenu />
 
-            <main 
-                style={{
-                    margin: '0 auto',
-                    width: '100%',
-                    maxWidth: containerWidth ? `${containerWidth}px` : '1400px',
-                    padding: '80px 20px',
+            <Box
+                sx={{
+                    margin: "0 auto",
+                    width: "100%",
+                    maxWidth: maxWidth ? maxWidth : "1400px",
+                    padding: "80px 20px",
                     flexGrow: 1,
                 }}
+                component="main"
             >
                 {children}
-            </main>
+            </Box>
 
-            <footer>
-              footer
-            </footer>
+            {/* <footer>footer</footer> */}
         </Box>
-    )
-}
+    );
+};

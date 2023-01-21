@@ -1,17 +1,18 @@
 import { Typography, Grid } from "@mui/material";
+
 import { ShopLayout } from "@/components/layouts/ShopLayout";
-import { CartList, OrderSummaryCard } from "@/components/cart";
+import { CartList } from "@/components/cart";
+import { OrderSummaryCard } from "@/components/cart/orderSummaryCard/OrderSummaryCard";
 import { initialData } from "@/database/products";
 import { IProduct } from "@/interfaces";
-
 interface Props {}
 
-export const CardPage = ({}: Props) => {
+export const SummaryPage = ({}: Props) => {
     const n = 4;
     return (
         <ShopLayout
-            pageTitle={`Carrito - ${n}`}
-            pageDescription="Carrito de compras de la tienda"
+            pageTitle={`Resumen de orden - ${n}`}
+            pageDescription="Resumen de orden de la tienda"
             maxWidth={{
                 sm: 550,
                 md: 1080,
@@ -23,11 +24,13 @@ export const CardPage = ({}: Props) => {
                     margin: { sm: "auto", md: "auto", lg: "none" },
                 }}
             >
+                {/* heading */}
                 <Grid item xs={12}>
                     <Typography variant="h1" component="h1" pb={5}>
-                        Carrito
+                        Resumen de la orden
                     </Typography>
                 </Grid>
+
                 <CartList
                     products={[
                         initialData.products[0] as IProduct,
@@ -35,10 +38,10 @@ export const CardPage = ({}: Props) => {
                         initialData.products[0] as IProduct,
                     ]}
                 />
-                <OrderSummaryCard title="Orden" />
+                <OrderSummaryCard title="Resumen (3 productos)" address />
             </Grid>
         </ShopLayout>
     );
 };
 
-export default CardPage;
+export default SummaryPage;
