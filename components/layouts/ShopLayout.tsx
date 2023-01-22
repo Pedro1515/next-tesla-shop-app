@@ -4,20 +4,13 @@ import Head from "next/head";
 import { Box } from "@mui/material";
 
 import { Navbar, SideMenu } from "../ui";
+import { MuiStyleBP } from "@/interfaces/muiStyleBreackPoints";
 
 interface Props extends PropsWithChildren {
     pageTitle: string;
     pageDescription: string;
     imageFullUrl?: string;
-    maxWidth?:
-        | {
-              xs?: number;
-              sm?: number;
-              md?: number;
-              lg?: number;
-              xl?: number;
-          }
-        | number;
+    maxWidth?: MuiStyleBP;
 }
 
 export const ShopLayout = ({
