@@ -1,8 +1,8 @@
 import { Typography, Grid } from "@mui/material";
 import { ShopLayout } from "@/components/layouts/ShopLayout";
 import { CartList, OrderSummaryCard } from "@/components/cart";
-import { initialData } from "@/database/products";
 import { IProduct } from "@/interfaces";
+import { seedData } from "@/database";
 
 interface Props {}
 
@@ -30,9 +30,9 @@ export const CardPage = ({}: Props) => {
                 </Grid>
                 <CartList
                     products={[
-                        initialData.products[0] as IProduct,
-                        initialData.products[1] as IProduct,
-                        initialData.products[0] as IProduct,
+                        seedData.products[0] as IProduct,
+                        seedData.products[1] as IProduct,
+                        seedData.products[0] as IProduct,
                     ]}
                 />
                 <OrderSummaryCard title="Orden" />

@@ -1,11 +1,19 @@
+import { GetStaticProps } from "next";
+
+import { productsApi } from "@/api";
+import { IProduct } from "@/interfaces";
 import { Typography } from "@mui/material";
 
 import { ShopLayout } from "components/layouts/ShopLayout";
-import { initialData } from "database/products";
 import { ProductList } from "components/products/ProductList";
-import { IProduct } from "../interfaces/product";
 
-export default function Home() {
+interface Props {
+    products: IProduct[];
+}
+
+export default function Home({ products }: Props) {
+    console.log(products);
+
     return (
         <ShopLayout
             pageTitle="Tesla | Shop - Home"
@@ -18,7 +26,16 @@ export default function Home() {
                 Todos los productos
             </Typography>
 
-            <ProductList products={initialData.products as IProduct[]} />
+            <ProductList products={products} />
         </ShopLayout>
     );
 }
+
+export const getStaticProps: GetStaticProps = async () => {
+    const { data } = await productsApi.get<IProduct[]>("/");
+    return {
+        props: {
+            products: data,
+        },
+    };
+};
