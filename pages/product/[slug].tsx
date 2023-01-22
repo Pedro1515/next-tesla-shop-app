@@ -3,13 +3,15 @@ import React from "react";
 import { Grid, Typography, Box, Button, Chip } from "@mui/material";
 
 import { ShopLayout } from "components/layouts/ShopLayout";
-import { seedData } from "database/products";
 import { ProductSlideshow, SizeSelector } from "components/products";
 import { ItemCounter } from "../../components/ui";
+import { IProduct } from "@/interfaces";
 
-const product = seedData.products[0];
+interface Props {
+    product: IProduct;
+}
 
-const ProductPage = () => {
+const ProductPage = ({ product }: Props) => {
     return (
         <ShopLayout
             pageTitle={product.title}
@@ -61,6 +63,19 @@ const ProductPage = () => {
             {/* footer */}
         </ShopLayout>
     );
+};
+
+export const getServerSideProps = async ({ params }: any) => {
+    const { slug } = params;
+    const res = await fetch(`http://localhost:3001/api/products/${slug}`);
+
+    const product = await res.json();
+
+    return {
+        props: {
+            product,
+        },
+    };
 };
 
 export default ProductPage;

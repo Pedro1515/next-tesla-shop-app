@@ -32,7 +32,11 @@ export const ProductCard = ({ product }: Props) => {
                 onMouseEnter={() => setIsHover(true)}
                 onMouseLeave={() => setIsHover(false)}
             >
-                <Link href={`/product/slug`} prefetch={false} legacyBehavior>
+                <Link
+                    href={`/product/${product.slug}`}
+                    prefetch={false}
+                    legacyBehavior
+                >
                     <CardActionArea sx={{ borderRadius: radius }}>
                         <CardMedia
                             component="img"

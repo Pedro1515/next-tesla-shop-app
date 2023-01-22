@@ -1,4 +1,5 @@
 import { db } from "@/database";
+import { SHOP_CONSTANTS } from "@/database/constants";
 import { IProductModel } from "@/database/models";
 import ProductModel from "@/database/models/Product";
 import type { NextApiRequest, NextApiResponse } from "next";
@@ -11,7 +12,7 @@ export default function handle(
 ) {
     switch (req.method) {
         case "GET":
-            return getProducts(res);
+            return getProducts(req, res);
 
         case "POST":
             return postProduct(req, res);
@@ -23,12 +24,28 @@ export default function handle(
     }
 }
 
-const getProducts = async (res: NextApiResponse<Data>) => {
+const getProducts = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
+    const { gender = "" } = req.query;
+
+    let condition = {};
+
+    if (gender && !SHOP_CONSTANTS.validGender.includes(gender as string)) {
+        res.status(400).json({
+            message: `gender no found, It must be ${SHOP_CONSTANTS.validGender}`,
+        });
+    }
+
+    if (gender) condition = { gender };
+
     await db.connect();
-    const Products = await ProductModel.find().sort({ createdAt: "ascending" });
+    const Products = await ProductModel.find(condition)
+        .select("title price sizes images inStock slug -_id ")
+        .lean();
     await db.disconnect();
 
     res.status(200).json(Products);
+
+    res.status(200).json([]);
 };
 
 const postProduct = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
