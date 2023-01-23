@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import {
     Box,
     Divider,
@@ -9,42 +10,45 @@ import {
     ListItem,
     ListItemIcon,
     ListItemText,
-    ListSubheader
-} from "@mui/material"
+    ListSubheader,
+} from "@mui/material";
 
-import { 
-    AccountCircleOutlined, 
-    AdminPanelSettings, 
-    CategoryOutlined, 
-    ConfirmationNumberOutlined, 
-    EscalatorWarningOutlined, 
-    FemaleOutlined, 
-    LoginOutlined, 
-    MaleOutlined, 
-    SearchOutlined, 
-    VpnKeyOutlined 
-} from "@mui/icons-material"
+import {
+    AccountCircleOutlined,
+    AdminPanelSettings,
+    CategoryOutlined,
+    ConfirmationNumberOutlined,
+    EscalatorWarningOutlined,
+    FemaleOutlined,
+    LoginOutlined,
+    MaleOutlined,
+    SearchOutlined,
+    VpnKeyOutlined,
+} from "@mui/icons-material";
+import { useUi } from "@/hooks/useUi";
 
 export const SideMenu = () => {
+    const { onToggleSideMenu, state } = useUi();
+
     return (
         <Drawer
-            open={ false }
-            anchor='right'
-            sx={{ backdropFilter: 'blur(4px)', transition: 'all 0.5s ease-out' }}
+            open={state.isSideMenuOpen}
+            anchor="right"
+            sx={{
+                backdropFilter: "blur(4px)",
+                transition: "all 0.5s ease-out",
+            }}
+            onClose={onToggleSideMenu}
         >
             <Box sx={{ paddingTop: 5 }}>
-            
                 <List>
-
                     <ListItem>
                         <Input
-                            type='text'
+                            type="text"
                             placeholder="Buscar..."
                             endAdornment={
                                 <InputAdornment position="end">
-                                    <IconButton
-                                        aria-label="toggle password visibility"
-                                    >
+                                    <IconButton aria-label="toggle password visibility">
                                         <SearchOutlined />
                                     </IconButton>
                                 </InputAdornment>
@@ -54,61 +58,58 @@ export const SideMenu = () => {
 
                     <ListItem button>
                         <ListItemIcon>
-                            <AccountCircleOutlined/>
+                            <AccountCircleOutlined />
                         </ListItemIcon>
-                        <ListItemText primary={'Perfil'} />
+                        <ListItemText primary={"Perfil"} />
                     </ListItem>
 
                     <ListItem button>
                         <ListItemIcon>
-                            <ConfirmationNumberOutlined/>
+                            <ConfirmationNumberOutlined />
                         </ListItemIcon>
-                        <ListItemText primary={'Mis Ordenes'} />
-                    </ListItem>
-
-
-
-                    <ListItem button>
-                        <ListItemIcon>
-                            <VpnKeyOutlined/>
-                        </ListItemIcon>
-                        <ListItemText primary={'Ingresar'} />
+                        <ListItemText primary={"Mis Ordenes"} />
                     </ListItem>
 
                     <ListItem button>
                         <ListItemIcon>
-                            <LoginOutlined/>
+                            <VpnKeyOutlined />
                         </ListItemIcon>
-                        <ListItemText primary={'Salir'} />
+                        <ListItemText primary={"Ingresar"} />
+                    </ListItem>
+
+                    <ListItem button>
+                        <ListItemIcon>
+                            <LoginOutlined />
+                        </ListItemIcon>
+                        <ListItemText primary={"Salir"} />
                     </ListItem>
 
                     {/* Categories */}
-                    <Box sx={{ display: { xs: '', sm: 'none' } }}>
+                    <Box sx={{ display: { xs: "", sm: "none" } }}>
                         <Divider />
                         <ListSubheader>Categorias</ListSubheader>
 
                         <ListItem button>
                             <ListItemIcon>
-                                <MaleOutlined/>
+                                <MaleOutlined />
                             </ListItemIcon>
-                            <ListItemText primary={'Hombres'} />
+                            <ListItemText primary={"Hombres"} />
                         </ListItem>
 
                         <ListItem button>
                             <ListItemIcon>
-                                <FemaleOutlined/>
+                                <FemaleOutlined />
                             </ListItemIcon>
-                            <ListItemText primary={'Mujeres'} />
+                            <ListItemText primary={"Mujeres"} />
                         </ListItem>
 
                         <ListItem button>
                             <ListItemIcon>
-                                <EscalatorWarningOutlined/>
+                                <EscalatorWarningOutlined />
                             </ListItemIcon>
-                            <ListItemText primary={'Niños'} />
+                            <ListItemText primary={"Niños"} />
                         </ListItem>
                     </Box>
-
 
                     {/* Admin */}
                     <Divider />
@@ -116,25 +117,25 @@ export const SideMenu = () => {
 
                     <ListItem button>
                         <ListItemIcon>
-                            <CategoryOutlined/>
+                            <CategoryOutlined />
                         </ListItemIcon>
-                        <ListItemText primary={'Productos'} />
+                        <ListItemText primary={"Productos"} />
                     </ListItem>
                     <ListItem button>
                         <ListItemIcon>
-                            <ConfirmationNumberOutlined/>
+                            <ConfirmationNumberOutlined />
                         </ListItemIcon>
-                        <ListItemText primary={'Ordenes'} />
+                        <ListItemText primary={"Ordenes"} />
                     </ListItem>
 
                     <ListItem button>
                         <ListItemIcon>
-                            <AdminPanelSettings/>
+                            <AdminPanelSettings />
                         </ListItemIcon>
-                        <ListItemText primary={'Usuarios'} />
+                        <ListItemText primary={"Usuarios"} />
                     </ListItem>
                 </List>
             </Box>
         </Drawer>
-    )
-}
+    );
+};
