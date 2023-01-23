@@ -1,5 +1,5 @@
 import { AppBar, Toolbar } from "@mui/material";
-import { Categories } from "./Categories";
+import { BarCategories } from "./BarCategories";
 import { Logo } from "./Logo";
 import { Options } from "./Options";
 
@@ -16,7 +16,7 @@ export const Navbar = () => (
             }}
         >
             <Logo />
-            <Categories />
+            <BarCategories />
             <Options />
         </Toolbar>
     </AppBar>

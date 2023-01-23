@@ -4,9 +4,7 @@ import NextLink from "next/link";
 import Link from "@mui/material/Link";
 import { Box, Button } from "@mui/material";
 
-interface Props {}
-
-export const Categories = ({}: Props) => {
+export const BarCategories = () => {
     const { pathname } = useRouter();
 
     return (

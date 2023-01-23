@@ -15,7 +15,6 @@ export const UiProvider: FC<PropsWithChildren> = ({ children }) => {
 
     const onToggleSideMenu = () => {
         dispatch({ type: "[isSideMenuOpen] - toggle menu" });
-        console.log("onToggleSideMenu");
     };
 
     return (

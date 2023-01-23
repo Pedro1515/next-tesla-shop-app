@@ -1,4 +1,3 @@
-import { useContext } from "react";
 import {
     Box,
     Divider,
@@ -8,6 +7,7 @@ import {
     InputAdornment,
     List,
     ListItem,
+    ListItemButton,
     ListItemIcon,
     ListItemText,
     ListSubheader,
@@ -18,14 +18,12 @@ import {
     AdminPanelSettings,
     CategoryOutlined,
     ConfirmationNumberOutlined,
-    EscalatorWarningOutlined,
-    FemaleOutlined,
     LoginOutlined,
-    MaleOutlined,
     SearchOutlined,
     VpnKeyOutlined,
 } from "@mui/icons-material";
 import { useUi } from "@/hooks/useUi";
+import { MenuCategories } from "./MenuCategories";
 
 export const SideMenu = () => {
     const { onToggleSideMenu, state } = useUi();
@@ -56,84 +54,59 @@ export const SideMenu = () => {
                         />
                     </ListItem>
 
-                    <ListItem button>
+                    <ListItemButton>
                         <ListItemIcon>
                             <AccountCircleOutlined />
                         </ListItemIcon>
                         <ListItemText primary={"Perfil"} />
-                    </ListItem>
+                    </ListItemButton>
 
-                    <ListItem button>
+                    <ListItemButton>
                         <ListItemIcon>
                             <ConfirmationNumberOutlined />
                         </ListItemIcon>
                         <ListItemText primary={"Mis Ordenes"} />
-                    </ListItem>
+                    </ListItemButton>
 
-                    <ListItem button>
+                    <ListItemButton>
                         <ListItemIcon>
                             <VpnKeyOutlined />
                         </ListItemIcon>
                         <ListItemText primary={"Ingresar"} />
-                    </ListItem>
+                    </ListItemButton>
 
-                    <ListItem button>
+                    <ListItemButton>
                         <ListItemIcon>
                             <LoginOutlined />
                         </ListItemIcon>
                         <ListItemText primary={"Salir"} />
-                    </ListItem>
+                    </ListItemButton>
 
-                    {/* Categories */}
-                    <Box sx={{ display: { xs: "", sm: "none" } }}>
-                        <Divider />
-                        <ListSubheader>Categorias</ListSubheader>
-
-                        <ListItem button>
-                            <ListItemIcon>
-                                <MaleOutlined />
-                            </ListItemIcon>
-                            <ListItemText primary={"Hombres"} />
-                        </ListItem>
-
-                        <ListItem button>
-                            <ListItemIcon>
-                                <FemaleOutlined />
-                            </ListItemIcon>
-                            <ListItemText primary={"Mujeres"} />
-                        </ListItem>
-
-                        <ListItem button>
-                            <ListItemIcon>
-                                <EscalatorWarningOutlined />
-                            </ListItemIcon>
-                            <ListItemText primary={"Niños"} />
-                        </ListItem>
-                    </Box>
+                    <MenuCategories />
 
                     {/* Admin */}
                     <Divider />
                     <ListSubheader>Admin Panel</ListSubheader>
 
-                    <ListItem button>
+                    <ListItemButton>
                         <ListItemIcon>
                             <CategoryOutlined />
                         </ListItemIcon>
                         <ListItemText primary={"Productos"} />
-                    </ListItem>
-                    <ListItem button>
+                    </ListItemButton>
+                    <ListItemButton>
                         <ListItemIcon>
                             <ConfirmationNumberOutlined />
                         </ListItemIcon>
                         <ListItemText primary={"Ordenes"} />
-                    </ListItem>
+                    </ListItemButton>
 
-                    <ListItem button>
+                    <ListItemButton>
                         <ListItemIcon>
                             <AdminPanelSettings />
                         </ListItemIcon>
                         <ListItemText primary={"Usuarios"} />
-                    </ListItem>
+                    </ListItemButton>
                 </List>
             </Box>
         </Drawer>
