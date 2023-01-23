@@ -15,8 +15,8 @@ export const Navbar = () => (
                 flex: 1,
             }}
         >
-            <Categories />
             <Logo />
+            <Categories />
             <Options />
         </Toolbar>
     </AppBar>
