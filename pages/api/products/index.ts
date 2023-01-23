@@ -44,8 +44,6 @@ const getProducts = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
     await db.disconnect();
 
     res.status(200).json(Products);
-
-    res.status(200).json([]);
 };
 
 const postProduct = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
