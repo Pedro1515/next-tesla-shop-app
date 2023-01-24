@@ -1,4 +1,4 @@
 export * from "./card/ProductCard";
 export * from "./ProductList";
-export * from "./ProductSlideshow";
+export * from "./slug/ProductSlideshow";
 export * from "./sizeSelector/SizeSelector";

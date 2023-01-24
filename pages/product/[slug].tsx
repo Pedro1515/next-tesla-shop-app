@@ -1,27 +1,27 @@
 import React from "react";
 
-import { Grid, Typography, Box, Button, Chip } from "@mui/material";
+import { Grid, Typography, Box, Button } from "@mui/material";
 
 import { ShopLayout } from "components/layouts/ShopLayout";
 import { ProductSlideshow, SizeSelector } from "components/products";
 import { ItemCounter } from "../../components/ui";
 import { IProduct } from "@/interfaces";
+import { dbProducts } from "@/database/dbProducts";
 
 interface Props {
-    product: IProduct;
+    product: IProduct | null;
 }
 
 const ProductPage = ({ product }: Props) => {
+    if (!product) return <div>404</div>;
+
     return (
         <ShopLayout
             pageTitle={product.title}
             pageDescription={product.description}
         >
             <Grid container spacing={3}>
-                {/* Slideshow */}
-                <Grid item xs={12} sm={7}>
-                    <ProductSlideshow images={product.images} />
-                </Grid>
+                <ProductSlideshow images={product.images} />
                 <Grid item xs={12} sm={5}>
                     {/* Titles */}
                     <Typography variant="h1" component="h1">
@@ -66,10 +66,17 @@ const ProductPage = ({ product }: Props) => {
 };
 
 export const getServerSideProps = async ({ params }: any) => {
-    const { slug } = params;
-    const res = await fetch(`http://localhost:3001/api/products/${slug}`);
+    const { slug = "" } = params;
+    const product = await dbProducts(slug);
 
-    const product = await res.json();
+    if (!product) {
+        return {
+            redirect: {
+                destination: "/",
+                permanent: false,
+            },
+        };
+    }
 
     return {
         props: {
