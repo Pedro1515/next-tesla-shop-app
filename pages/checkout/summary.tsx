@@ -3,8 +3,9 @@ import { Typography, Grid } from "@mui/material";
 import { ShopLayout } from "@/components/layouts/ShopLayout";
 import { CartList } from "@/components/cart";
 import { OrderSummaryCard } from "@/components/cart/orderSummaryCard/OrderSummaryCard";
-import { seedData } from "@/database/products";
 import { IProduct } from "@/interfaces";
+import { seedData } from "@/database";
+
 interface Props {}
 
 export const SummaryPage = ({}: Props) => {
@@ -31,13 +32,13 @@ export const SummaryPage = ({}: Props) => {
                     </Typography>
                 </Grid>
 
-                <CartList
+                {/* <CartList
                     products={[
                         seedData.products[0] as IProduct,
                         seedData.products[1] as IProduct,
                         seedData.products[0] as IProduct,
                     ]}
-                />
+                /> */}
                 <OrderSummaryCard title="Resumen (3 productos)" address />
             </Grid>
         </ShopLayout>

@@ -17,3 +17,11 @@ export const dbProducts = async (slug: string) => {
 
     return product ? { ...product, ...propertiesParsed } : null;
 };
+
+export const dbProdunctsSlugs = async (): Promise<{ slug: string }[]> => {
+    await db.connect();
+    const slugs = await ProductModel.find().select("slug -_id").lean();
+    await db.disconnect();
+
+    return slugs || [];
+};

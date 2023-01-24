@@ -6,7 +6,9 @@ import { ShopLayout } from "components/layouts/ShopLayout";
 import { ProductSlideshow, SizeSelector } from "components/products";
 import { ItemCounter } from "../../components/ui";
 import { IProduct } from "@/interfaces";
-import { dbProducts } from "@/database/dbProducts";
+import { dbProducts, dbProdunctsSlugs } from "@/database/dbProducts";
+import { GetStaticPaths, GetStaticProps } from "next";
+import { ParsedUrlQuery } from "querystring";
 
 interface Props {
     product: IProduct | null;
@@ -60,14 +62,26 @@ const ProductPage = ({ product }: Props) => {
                     </Box>
                 </Grid>
             </Grid>
-            {/* footer */}
         </ShopLayout>
     );
 };
 
-export const getServerSideProps = async ({ params }: any) => {
-    const { slug = "" } = params;
-    const product = await dbProducts(slug);
+export const getStaticPaths: GetStaticPaths = async () => {
+    const slugs = await dbProdunctsSlugs();
+
+    const paths = slugs.map((slug) => ({
+        params: slug,
+    }));
+
+    return {
+        paths,
+        fallback: "blocking",
+    };
+};
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+    const { slug = "" } = params as ParsedUrlQuery;
+    const product = await dbProducts(slug as string);
 
     if (!product) {
         return {
@@ -82,6 +96,7 @@ export const getServerSideProps = async ({ params }: any) => {
         props: {
             product,
         },
+        revalidate: 60 * 60 * 24, // 24 hours
     };
 };
 

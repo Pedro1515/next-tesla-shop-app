@@ -1,7 +1,4 @@
-import NextLink from "next/link";
-import Link from "@mui/material/Link";
-
-import { Divider, Box, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 export const OrderDetails = () => {
     return (

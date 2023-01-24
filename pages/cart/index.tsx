@@ -28,13 +28,13 @@ export const CardPage = ({}: Props) => {
                         Carrito
                     </Typography>
                 </Grid>
-                <CartList
+                {/* <CartList
                     products={[
                         seedData.products[0] as IProduct,
                         seedData.products[1] as IProduct,
                         seedData.products[0] as IProduct,
                     ]}
-                />
+                /> */}
                 <OrderSummaryCard title="Orden" />
             </Grid>
         </ShopLayout>
