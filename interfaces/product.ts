@@ -10,8 +10,9 @@ export interface IProduct {
     title: string;
     createdAt: Date;
     updatedAt: Date;
-    gender: "men" | "women" | "kid" | "unisex";
+    gender: IGender;
 }
 
 export type ISize = "XS" | "S" | "M" | "L" | "XL" | "XXL" | "XXXL";
 export type IType = "shirts" | "pants" | "hoodies" | "hats";
+export type IGender = "men" | "women" | "kid" | "unisex";

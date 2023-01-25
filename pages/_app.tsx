@@ -4,6 +4,7 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 import { lightTheme } from "themes";
 import { SWRConfig } from "swr";
 import { UiProvider } from "@/contexts";
+import { CartProvider } from "@/contexts/cart";
 
 export default function App({ Component, pageProps }: AppProps) {
     return (
@@ -15,9 +16,11 @@ export default function App({ Component, pageProps }: AppProps) {
         >
             <ThemeProvider theme={lightTheme}>
                 <CssBaseline />
-                <UiProvider>
-                    <Component {...pageProps} />
-                </UiProvider>
+                <CartProvider>
+                    <UiProvider>
+                        <Component {...pageProps} />
+                    </UiProvider>
+                </CartProvider>
             </ThemeProvider>
         </SWRConfig>
     );
