@@ -1,7 +1,7 @@
 import { AppBar, Toolbar } from "@mui/material";
 import { BarCategories } from "./BarCategories";
 import { Logo } from "./Logo";
-import { Options } from "./Options";
+import { Options } from "./options/Options";
 
 export const Navbar = () => (
     <AppBar

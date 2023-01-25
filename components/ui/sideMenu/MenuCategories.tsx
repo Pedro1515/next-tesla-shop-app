@@ -19,7 +19,7 @@ import { useRouter } from "next/router";
 import { useUi } from "../../../hooks/useUi";
 
 export const MenuCategories = () => {
-    const { onToggleSideMenu } = useUi();
+    const { toggleSideMenu } = useUi();
     const { push } = useRouter();
 
     return (
@@ -29,7 +29,7 @@ export const MenuCategories = () => {
 
             <NextLink href="/category/men" legacyBehavior passHref>
                 <Link underline="none">
-                    <ListItemButton onClick={onToggleSideMenu}>
+                    <ListItemButton onClick={toggleSideMenu}>
                         <ListItemIcon>
                             <MaleOutlined />
                         </ListItemIcon>
@@ -40,7 +40,7 @@ export const MenuCategories = () => {
 
             <NextLink href="/category/women" legacyBehavior passHref>
                 <Link underline="none">
-                    <ListItemButton onClick={onToggleSideMenu}>
+                    <ListItemButton onClick={toggleSideMenu}>
                         <ListItemIcon>
                             <FemaleOutlined />
                         </ListItemIcon>
@@ -51,7 +51,7 @@ export const MenuCategories = () => {
 
             <NextLink href="/category/kids" legacyBehavior passHref>
                 <Link underline="none">
-                    <ListItemButton onClick={onToggleSideMenu}>
+                    <ListItemButton onClick={toggleSideMenu}>
                         <ListItemIcon>
                             <EscalatorWarningOutlined />
                         </ListItemIcon>

@@ -7,13 +7,13 @@ import { ButtonSlim } from "./ButtonSlim";
 import { ButtonContainer } from "./ButtonContainer";
 
 interface Props {
-    sizes: ISize[];
+    sizes?: ISize[];
     variant?: "slim" | "container";
 }
 
 export const SizeSelector = ({ sizes, variant = "container" }: Props) => {
     const [sizeSelected, setSizeSelected] = useState<ISize | null>(null);
-    if (sizes.length === 0) return null;
+    if (sizes?.length === 0) return null;
 
     const onSelect = (size: ISize) => {
         setSizeSelected(size);

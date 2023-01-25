@@ -7,17 +7,15 @@ import { Box, IconButton, Badge } from "@mui/material";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import { useUi } from "@/hooks/useUi";
+import { SearchBox } from "./SearchBox";
 
 export const Options = () => {
     const { pathname } = useRouter();
-    const { onToggleSideMenu } = useUi();
+    const { toggleSideMenu } = useUi();
 
     return (
         <Box display="flex" flexBasis="33%" justifyContent="flex-end">
-            {/* Search */}
-            <IconButton>
-                <SearchOutlined />
-            </IconButton>
+            <SearchBox />
             {/* Cart */}
             <NextLink
                 href={{
@@ -36,7 +34,7 @@ export const Options = () => {
                 </Link>
             </NextLink>
             {/* Menu */}
-            <IconButton onClick={onToggleSideMenu}>
+            <IconButton onClick={toggleSideMenu}>
                 <MenuOutlinedIcon />
             </IconButton>
         </Box>

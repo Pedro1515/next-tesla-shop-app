@@ -13,7 +13,7 @@ const INITIAL_STATE: UiStateProps = {
 export const UiProvider: FC<PropsWithChildren> = ({ children }) => {
     const [state, dispatch] = useReducer(uiReducer, INITIAL_STATE as any);
 
-    const onToggleSideMenu = () => {
+    const toggleSideMenu = () => {
         dispatch({ type: "[isSideMenuOpen] - toggle menu" });
     };
 
@@ -21,7 +21,7 @@ export const UiProvider: FC<PropsWithChildren> = ({ children }) => {
         <UiContext.Provider
             value={{
                 state,
-                onToggleSideMenu,
+                toggleSideMenu,
             }}
         >
             {children}

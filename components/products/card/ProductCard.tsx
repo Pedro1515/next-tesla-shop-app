@@ -27,8 +27,9 @@ export const ProductCard = ({ product }: Props) => {
 
     return (
         <Grid item xs={12} sm={6} md={4} key={product.slug}>
-            <div
-                style={{ position: "relative", borderRadius: radius }}
+            <Box
+                position="relative"
+                borderRadius={radius}
                 onMouseEnter={() => setIsHover(true)}
                 onMouseLeave={() => setIsHover(false)}
             >
@@ -49,7 +50,7 @@ export const ProductCard = ({ product }: Props) => {
                     </CardActionArea>
                 </Link>
                 {isHover && <BoxAddToCart {...product} />}
-            </div>
+            </Box>
             <Box sx={{ mt: 1 }}>
                 <Typography fontWeight={600}>{product.title}</Typography>
                 <Typography fontWeight={600}>{`$${product.price}`}</Typography>

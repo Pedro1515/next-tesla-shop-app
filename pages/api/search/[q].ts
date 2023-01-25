@@ -1,8 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
 import { db } from "@/database";
-import Product from "@/database/models/Product";
 import { IProduct } from "@/interfaces";
+import ProductModel from "@/database/models/Product";
 
 type Data = { message: string } | IProduct[];
 
@@ -29,14 +29,14 @@ const searchProducts = async (
 
     if (q.length === 0) {
         return res.status(400).json({
-            message: "Debe de especificar el query de búsqueda",
+            message: "Search query is required",
         });
     }
 
     q = q.toString().toLowerCase();
 
     await db.connect();
-    const products = await Product.find({
+    const products = await ProductModel.find({
         $text: { $search: q },
     })
         .select("title images price inStock slug -_id")
