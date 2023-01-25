@@ -18,7 +18,11 @@ export const MenuSearchBox = () => {
     };
 
     return (
-        <ListItem>
+        <ListItem
+            sx={{
+                display: { xs: "inline-flex", md: "none" },
+            }}
+        >
             <Input
                 type="text"
                 placeholder="Buscar..."

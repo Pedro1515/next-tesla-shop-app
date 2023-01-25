@@ -18,7 +18,7 @@ export const SideMenu = () => {
             }}
             onClose={toggleSideMenu}
         >
-            <Box sx={{ paddingTop: 5 }}>
+            <Box pt={5} width="16rem">
                 <List>
                     <MenuSearchBox />
                     <MenuGeneralOptions />
