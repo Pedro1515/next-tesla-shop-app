@@ -39,7 +39,7 @@ const searchProducts = async (
     const products = await ProductModel.find({
         $text: { $search: q },
     })
-        .select("title images price inStock slug -_id")
+        .select("title price sizes images inStock slug -_id ")
         .lean();
 
     await db.disconnect();
