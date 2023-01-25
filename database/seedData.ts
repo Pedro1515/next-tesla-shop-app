@@ -24,7 +24,7 @@ export const seedData: SeedData = {
             description:
                 "Introducing the Tesla Chill Collection. The Men’s Chill Crew Neck Sweatshirt has a premium, heavyweight exterior and soft fleece interior for comfort in any season. The sweatshirt features a subtle thermoplastic polyurethane T logo on the chest and a Tesla wordmark below the back collar. Made from 60% cotton and 40% recycled polyester.",
             images: ["1740176-00-A_0_2000.jpg", "1740176-00-A_1.jpg"],
-            inStock: 7,
+            inStock: 0,
             price: 75,
             sizes: ["XS", "S", "M", "L", "XL", "XXL"],
             slug: "mens_chill_crew_neck_sweatshirt",
@@ -143,7 +143,7 @@ export const seedData: SeedData = {
             description:
                 "Designed for fit, comfort and style, the Tesla T Logo Tee is made from 100% Peruvian cotton and features a silicone-printed T Logo on the left chest.",
             images: ["7652426-00-A_0_2000.jpg", "7652426-00-A_1.jpg"],
-            inStock: 5,
+            inStock: 0,
             price: 35,
             sizes: ["XS", "S"],
             slug: "men_3d_t_logo_tee",
@@ -286,7 +286,7 @@ export const seedData: SeedData = {
             description:
                 "Introducing the Tesla Chill Collection. The Chill Pullover Hoodie has a premium, heavyweight exterior and soft fleece interior for comfort in any season. The unisex hoodie features subtle thermoplastic polyurethane Tesla logos across the chest and on the sleeve, a double layer single seam hood and pockets with custom matte zipper pulls. Made from 60% cotton and 40% recycled polyester.",
             images: ["1740051-00-A_0_2000.jpg", "1740051-00-A_1.jpg"],
-            inStock: 10,
+            inStock: 0,
             price: 130,
             sizes: ["XS", "S", "M", "L", "XL", "XXL"],
             slug: "chill_pullover_hoodie",
@@ -624,7 +624,7 @@ export const seedData: SeedData = {
             description:
                 "The checkered tee is made from long grain, GMO free Peruvian cotton. Peru is the only country in the world where cotton is picked by hand on a large scale. The 4,500-year-old tradition prevents damage to the fiber during the picking process and removes the need to use chemicals to open the cotton plants before harvest. This environmentally friendly process results in cotton that is soft, strong, and lustrous – and the tee will get even softer with every wash.",
             images: ["100042307_0_2000.jpg", "100042307_alt_2000.jpg"],
-            inStock: 10,
+            inStock: 0,
             price: 30,
             sizes: ["XS", "S", "M"],
             slug: "kids_checkered_tee",

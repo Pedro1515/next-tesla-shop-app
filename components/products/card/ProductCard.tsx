@@ -7,6 +7,7 @@ import {
     CardMedia,
     Box,
     Typography,
+    Chip,
 } from "@mui/material";
 
 import { IProduct } from "@/interfaces";
@@ -24,6 +25,7 @@ export const ProductCard = ({ product }: Props) => {
         : "/products/" + product.images[0];
 
     const radius = "3px";
+    const outOfStock = !product.inStock;
 
     return (
         <Grid item xs={12} sm={6} md={4} key={product.slug}>
@@ -33,6 +35,21 @@ export const ProductCard = ({ product }: Props) => {
                 onMouseEnter={() => setIsHover(true)}
                 onMouseLeave={() => setIsHover(false)}
             >
+                {outOfStock && (
+                    <Chip
+                        color="primary"
+                        variant="filled"
+                        label="Agotado"
+                        sx={{
+                            position: "absolute",
+                            opacity: 0.8,
+                            top: 0,
+                            left: 0,
+                            zIndex: 1,
+                        }}
+                    />
+                )}
+
                 <Link
                     href={`/product/${product.slug}`}
                     prefetch={false}
@@ -49,7 +66,9 @@ export const ProductCard = ({ product }: Props) => {
                         />
                     </CardActionArea>
                 </Link>
-                {isHover && <BoxAddToCart {...product} />}
+                {isHover && (
+                    <BoxAddToCart product={product} outOfStock={outOfStock} />
+                )}
             </Box>
             <Box sx={{ mt: 1 }}>
                 <Typography fontWeight={600}>{product.title}</Typography>
