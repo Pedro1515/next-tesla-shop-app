@@ -2,8 +2,13 @@ import NextLink from "next/link";
 import Link from "@mui/material/Link";
 import { CardActionArea, CardMedia } from "@mui/material";
 
-export const ItemImage = ({ img }: { img: string }) => (
-    <NextLink href="/product/slug" legacyBehavior passHref>
+interface Props {
+    img: string;
+    slug: string;
+}
+
+export const ItemImage = ({ img, slug }: Props) => (
+    <NextLink href={`/product/${slug}`} legacyBehavior passHref>
         <Link underline="none">
             <CardActionArea>
                 <CardMedia

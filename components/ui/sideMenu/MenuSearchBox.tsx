@@ -3,7 +3,7 @@ import { useState } from "react";
 import { SearchOutlined } from "@mui/icons-material";
 import { ListItem, Input, InputAdornment, IconButton } from "@mui/material";
 import { useRouter } from "next/router";
-import { useUi } from "../../../utils/hooks/useUi";
+import { useUi } from "../../../hooks/useUi";
 
 export const MenuSearchBox = () => {
     const { toggleSideMenu } = useUi();

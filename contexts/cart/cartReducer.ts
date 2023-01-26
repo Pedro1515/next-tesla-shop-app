@@ -4,8 +4,9 @@ import { CartStateProps } from "./CartProvider";
 type CartActionTypes =
     | { type: "[Cart] - Replace cart"; payload: ICartProduct[] }
     | { type: "[Cart] - Add product"; payload: ICartProduct }
-    | { type: "[Cart] - Update isLoading"; payload: boolean }
-    | { type: "[Cart] - Remove product"; payload: ICartProduct };
+    | { type: "[Cart] - Remove product"; payload: ICartProduct }
+    | { type: "[Cart] - Update product"; payload: ICartProduct }
+    | { type: "[IsLoading] - Update isLoading"; payload: boolean };
 
 export const cartReducer = (
     state: CartStateProps,
@@ -30,15 +31,28 @@ export const cartReducer = (
             };
 
         case "[Cart] - Add product":
-            console.log("restOfCart", restOfCart(action.payload));
-            console.log("action.payload", action.payload);
-
             return {
                 ...state,
                 cart: [...restOfCart(action.payload), action.payload],
             };
 
-        case "[Cart] - Update isLoading":
+        case "[Cart] - Update product":
+            return {
+                ...state,
+                cart: [
+                    ...state.cart.map((p) => {
+                        if (
+                            p._id === action.payload._id &&
+                            p.size === action.payload.size
+                        ) {
+                            return action.payload;
+                        }
+                        return p;
+                    }),
+                ],
+            };
+
+        case "[IsLoading] - Update isLoading":
             return {
                 ...state,
                 isLoading: action.payload,

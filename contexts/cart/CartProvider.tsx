@@ -9,7 +9,6 @@ import {
 } from "react";
 import { CartContext, cartReducer } from "./";
 import Cookie from "js-cookie";
-import { multiplyArray } from "@/utils/multiplyArray";
 
 export interface CartStateProps {
     cart: ICartProduct[];
@@ -26,7 +25,10 @@ export const CartProvider: FC<PropsWithChildren> = ({ children }) => {
     const [initialized, setInitialized] = useState(false);
 
     const cartTotal = useMemo(
-        () => multiplyArray(state.cart.map((p) => p.quantity)),
+        () =>
+            state.cart
+                .map((p) => p.quantity)
+                .reduce((acc, val) => acc + val, 0),
         [state.cart]
     );
 
@@ -48,7 +50,7 @@ export const CartProvider: FC<PropsWithChildren> = ({ children }) => {
 
     const updateProduct = (product: ICartProduct) => {
         dispatch({
-            type: "[Cart] - Add product",
+            type: "[Cart] - Update product",
             payload: product,
         });
     };
@@ -63,7 +65,7 @@ export const CartProvider: FC<PropsWithChildren> = ({ children }) => {
 
     const updateIsLoading = (boolean: boolean) => {
         dispatch({
-            type: "[Cart] - Update isLoading",
+            type: "[IsLoading] - Update isLoading",
             payload: boolean,
         });
     };

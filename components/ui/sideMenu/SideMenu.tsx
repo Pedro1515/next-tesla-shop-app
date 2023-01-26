@@ -1,5 +1,5 @@
 import { Box, Divider, Drawer, List } from "@mui/material";
-import { useUi } from "@/utils/hooks/useUi";
+import { useUi } from "@/hooks/useUi";
 import { MenuCategories } from "./MenuCategories";
 import { MenuAdminPanel } from "./MenuAdminPanel";
 import { MenuGeneralOptions } from "./MenuGeneralOptions";

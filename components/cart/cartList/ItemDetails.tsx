@@ -1,5 +1,5 @@
 import { ItemCounter } from "@/components/ui";
-import { useCart } from "@/utils/hooks/useCart";
+import { useCart } from "@/hooks/useCart";
 import { Box, Typography, Button } from "@mui/material";
 import { ICartProduct } from "../../../interfaces/cart";
 

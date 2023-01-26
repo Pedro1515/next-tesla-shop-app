@@ -1,7 +1,7 @@
 import { Typography, Grid } from "@mui/material";
 import { ShopLayout } from "@/components/layouts/ShopLayout";
 import { CartList, OrderSummaryCard } from "@/components/cart";
-import { useCart } from "@/utils/hooks/useCart";
+import { useCart } from "@/hooks/useCart";
 import { EmptyLayout } from "@/components/layouts";
 import { RemoveShoppingCartOutlined } from "@mui/icons-material";
 

@@ -2,7 +2,7 @@ import { Box } from "@mui/material";
 import { Grid } from "@mui/material";
 import { ItemImage } from "./ItemImage";
 import { ItemDetails } from "./ItemDetails";
-import { useCart } from "@/utils/hooks/useCart";
+import { useCart } from "@/hooks/useCart";
 
 export const CartList = () => {
     const { cart } = useCart();
@@ -15,7 +15,7 @@ export const CartList = () => {
                     key={product.slug}
                     sx={{ mb: 1, paddingRight: { md: 10 } }}
                 >
-                    <ItemImage img={product.image} />
+                    <ItemImage img={product.image} slug={product.slug} />
                     <ItemDetails {...product} />
                 </Box>
             ))}
