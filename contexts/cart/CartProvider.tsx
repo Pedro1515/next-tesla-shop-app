@@ -9,6 +9,7 @@ import {
 } from "react";
 import { CartContext, cartReducer } from "./";
 import Cookie from "js-cookie";
+import { calcCartTotal } from "@/utils/calcCartTotal";
 
 export interface CartStateProps {
     cart: ICartProduct[];
@@ -24,13 +25,9 @@ export const CartProvider: FC<PropsWithChildren> = ({ children }) => {
     const [state, dispatch] = useReducer(cartReducer, INITIAL_STATE);
     const [initialized, setInitialized] = useState(false);
 
-    const cartTotal = useMemo(
-        () =>
-            state.cart
-                .map((p) => p.quantity)
-                .reduce((acc, val) => acc + val, 0),
-        [state.cart]
-    );
+    const cartTotal = useMemo(() => {
+        return calcCartTotal(state.cart);
+    }, [state.cart]);
 
     const addProduct = (product: ICartProduct) => {
         const productInCart = state.cart.find(

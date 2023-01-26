@@ -1,6 +1,9 @@
+import { useCart } from "@/hooks/useCart";
 import { Box, Typography } from "@mui/material";
 
 export const OrderDetails = () => {
+    const { cartTotal } = useCart();
+
     return (
         <>
             <Box
@@ -9,7 +12,7 @@ export const OrderDetails = () => {
                 alignItems="center"
             >
                 <Typography>N. De Productos</Typography>
-                <Typography>3 Productos</Typography>
+                <Typography>{cartTotal.quantity} Productos</Typography>
             </Box>
             <Box
                 display="flex"
@@ -18,7 +21,7 @@ export const OrderDetails = () => {
                 mt={0.5}
             >
                 <Typography>SubTotal</Typography>
-                <Typography>$327.48</Typography>
+                <Typography>${cartTotal.price}</Typography>
             </Box>
             <Box
                 display="flex"
@@ -26,8 +29,10 @@ export const OrderDetails = () => {
                 alignItems="center"
                 mt={0.5}
             >
-                <Typography>Impuestos (15%)</Typography>
-                <Typography>$48.00</Typography>
+                <Typography>
+                    Impuestos ({cartTotal.taxesPercentage}%)
+                </Typography>
+                <Typography>${cartTotal.taxes}</Typography>
             </Box>
             <Box
                 display="flex"
@@ -36,7 +41,9 @@ export const OrderDetails = () => {
                 mt={2}
             >
                 <Typography variant="subtitle1">Total</Typography>
-                <Typography variant="subtitle1">$427.00</Typography>
+                <Typography variant="subtitle1">
+                    ${cartTotal.priceWithTaxes}
+                </Typography>
             </Box>
         </>
     );

@@ -19,7 +19,10 @@ export const Options = () => {
             <NextLink href="/cart" legacyBehavior passHref>
                 <Link sx={{ margin: "0 0.5rem" }}>
                     <IconButton>
-                        <Badge badgeContent={cartTotal} color="primary">
+                        <Badge
+                            badgeContent={cartTotal.quantity}
+                            color="primary"
+                        >
                             <ShoppingCartOutlinedIcon />
                         </Badge>
                     </IconButton>

@@ -20,6 +20,7 @@ module.exports = {
         "react/react-in-jsx-scope": "off",
         "@typescript-eslint/no-empty-interface": "off",
         "no-empty-pattern": "off",
+        "prefer-const": "off",
         "@typescript-eslint/no-empty-function": "off",
         indent: ["error", 4, { SwitchCase: 1 }],
         "linebreak-style": ["error", "unix"],
