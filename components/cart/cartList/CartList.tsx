@@ -1,24 +1,22 @@
 import { Box } from "@mui/material";
 import { Grid } from "@mui/material";
-import { IProduct } from "@/interfaces";
 import { ItemImage } from "./ItemImage";
-import { ItemBody } from "./ItemBody";
+import { ItemDetails } from "./ItemDetails";
+import { useCart } from "@/hooks/useCart";
 
-interface Props {
-    products: IProduct[];
-}
+export const CartList = () => {
+    const { cart } = useCart();
 
-export const CartList = ({ products }: Props) => {
     return (
         <Grid item xs={12} sm={12} md={7}>
-            {products.map((product) => (
+            {cart.map((product) => (
                 <Box
                     display="flex"
                     key={product.slug}
                     sx={{ mb: 1, paddingRight: { md: 10 } }}
                 >
-                    <ItemImage img={product.images[0]} />
-                    <ItemBody {...product} />
+                    <ItemImage img={product.image} />
+                    <ItemDetails {...product} />
                 </Box>
             ))}
         </Grid>

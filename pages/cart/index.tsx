@@ -1,16 +1,27 @@
 import { Typography, Grid } from "@mui/material";
 import { ShopLayout } from "@/components/layouts/ShopLayout";
 import { CartList, OrderSummaryCard } from "@/components/cart";
-import { IProduct } from "@/interfaces";
-import { seedData } from "@/database";
+import { useCart } from "@/hooks/useCart";
+import { EmptyLayout } from "@/components/layouts";
+import { RemoveShoppingCartOutlined } from "@mui/icons-material";
 
-interface Props {}
+export const CardPage = () => {
+    const { cart } = useCart();
 
-export const CardPage = ({}: Props) => {
-    const n = 4;
+    if (cart.length === 0) {
+        return (
+            <EmptyLayout
+                pageTitle="Carrito vacío"
+                pageDescription="No hay artículos en el carito de compras"
+                BigIcon={<RemoveShoppingCartOutlined sx={{ fontSize: 100 }} />}
+                message="Su carrito esta vacío"
+            />
+        );
+    }
+
     return (
         <ShopLayout
-            pageTitle={`Carrito - ${n}`}
+            pageTitle={`Carrito - ${cart.length} artículos`}
             pageDescription="Carrito de compras de la tienda"
             maxWidth={{
                 sm: 550,
@@ -28,13 +39,7 @@ export const CardPage = ({}: Props) => {
                         Carrito
                     </Typography>
                 </Grid>
-                {/* <CartList
-                    products={[
-                        seedData.products[0] as IProduct,
-                        seedData.products[1] as IProduct,
-                        seedData.products[0] as IProduct,
-                    ]}
-                /> */}
+                <CartList />
                 <OrderSummaryCard title="Orden" />
             </Grid>
         </ShopLayout>

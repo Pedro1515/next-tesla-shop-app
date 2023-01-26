@@ -21,7 +21,7 @@ export const BoxAddToCart = ({ product, outOfStock }: Props) => {
         borderRadius: "0 0 2px 2px",
         backgroundColor: "primary.main",
         ":hover": {
-            backgroundColor: "primary.dark",
+            backgroundColor: outOfStock ? "primary.dark" : "primary.main",
         },
         boxShadow: "0 8px 16px 0 rgba(0,0,0,.16)",
         width: "100%",

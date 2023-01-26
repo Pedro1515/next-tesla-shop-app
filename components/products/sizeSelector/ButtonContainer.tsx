@@ -1,26 +1,29 @@
 import { ButtonVariantProps } from "@/interfaces";
-import { Button } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 
 export const ButtonContainer = ({
-    size,
-    sizeSelected,
-    onSelect,
+    label,
+    active,
+    onClick,
 }: ButtonVariantProps) => (
     <Button
         size="small"
         sx={{
             mr: 1,
             mb: 1,
-            backgroundColor:
-                sizeSelected === size ? "secondary.light" : "transparent",
-            textDecoration: sizeSelected === size ? "underline" : "none",
-            ":hover": {
-                textDecoration: sizeSelected === size ? "underline" : "none",
-            },
+            backgroundColor: active ? "secondary.light" : "transparent",
         }}
         color="secondary"
-        onClick={() => onSelect(size)}
+        onClick={onClick}
     >
-        {size}
+        <Typography
+            sx={{
+                borderBottom: active
+                    ? "1px solid black"
+                    : "1px solid transparent",
+            }}
+        >
+            {label}
+        </Typography>
     </Button>
 );

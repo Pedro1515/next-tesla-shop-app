@@ -15,7 +15,7 @@ export const ProductSlideshow = ({ images }: Props) => {
         <Grid item xs={12} sm={7}>
             <Slide
                 easing="ease"
-                duration={999999}
+                duration={4000}
                 indicators
                 transitionDuration={300}
                 nextArrow={

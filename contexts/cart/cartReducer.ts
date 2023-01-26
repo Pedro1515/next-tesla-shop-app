@@ -14,6 +14,14 @@ export const cartReducer = (
     action: CartActionTypes
 ): CartStateProps => {
     switch (action.type) {
+        case "[Cart] - Add product":
+            return {
+                ...state,
+                cart: [
+                    ...state.cart.filter((p) => p._id !== action.payload._id),
+                    action.payload,
+                ],
+            };
         default:
             return state;
     }

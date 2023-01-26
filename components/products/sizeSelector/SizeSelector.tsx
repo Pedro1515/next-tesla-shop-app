@@ -9,13 +9,19 @@ import { ButtonContainer } from "./ButtonContainer";
 interface Props {
     sizes: ISize[];
     variant?: "slim" | "container";
+    onSelectSize?: (size: ISize) => void;
 }
 
-export const SizeSelector = ({ sizes, variant = "container" }: Props) => {
+export const SizeSelector = ({
+    sizes,
+    variant = "container",
+    onSelectSize = () => {},
+}: Props) => {
     const [sizeSelected, setSizeSelected] = useState<ISize | null>(null);
 
     const onSelect = (size: ISize) => {
         setSizeSelected(size);
+        onSelectSize(size);
     };
 
     if (variant === "container") {
@@ -24,9 +30,9 @@ export const SizeSelector = ({ sizes, variant = "container" }: Props) => {
                 {sizes.map((size) => (
                     <ButtonContainer
                         key={size}
-                        size={size}
-                        onSelect={onSelect}
-                        sizeSelected={sizeSelected}
+                        label={size}
+                        active={sizeSelected === size}
+                        onClick={() => onSelect(size)}
                     />
                 ))}
             </Box>
@@ -38,9 +44,9 @@ export const SizeSelector = ({ sizes, variant = "container" }: Props) => {
             {sizes.map((size) => (
                 <ButtonSlim
                     key={size}
-                    size={size}
-                    onSelect={onSelect}
-                    sizeSelected={sizeSelected}
+                    label={size}
+                    active={sizeSelected === size}
+                    onClick={() => onSelect(size)}
                 />
             ))}
         </Box>

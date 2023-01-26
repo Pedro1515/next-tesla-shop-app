@@ -1,34 +1,36 @@
 import { ButtonVariantProps } from "@/interfaces";
 import { Typography } from "@mui/material";
 
-export const ButtonSlim = ({
-    size,
-    sizeSelected,
-    onSelect,
-}: ButtonVariantProps) => (
+export const ButtonSlim = ({ label, active, onClick }: ButtonVariantProps) => (
     <button
         style={{
             border: "none",
             padding: 0,
             backgroundColor: "transparent",
             cursor: "pointer",
+            flexGrow: 1,
+            display: "flex",
+            maxWidth: "30px",
         }}
-        onClick={() => onSelect(size)}
+        onClick={onClick}
     >
         <Typography
             sx={{
-                textDecoration: sizeSelected === size ? "underline" : "none",
-                ":hover": {
-                    textDecoration: "underline",
-                },
-                padding: "8px 12px",
+                flexGrow: 1,
+                // ":hover": {
+                //     backgroundColor: "primary.light",
+                // },
+                borderBottom: active
+                    ? "1px solid #fff"
+                    : "1px solid transparent",
             }}
+            padding="2px 0"
             component="span"
-            fontWeight={600}
             color="#fff"
+            fontWeight={600}
             fontSize={12}
         >
-            {size}
+            {label}
         </Typography>
     </button>
 );
