@@ -4,9 +4,9 @@ import Link from "@mui/material/Link";
 import { Box, IconButton, Badge } from "@mui/material";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
-import { useUi } from "@/hooks/useUi";
+import { useUi } from "@/utils/hooks/useUi";
 import { SearchBox } from "./SearchBox";
-import { useCart } from "@/hooks/useCart";
+import { useCart } from "@/utils/hooks/useCart";
 
 export const Options = () => {
     const { toggleSideMenu } = useUi();

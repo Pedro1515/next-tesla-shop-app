@@ -1,4 +1,4 @@
-import { useCart } from "@/hooks/useCart";
+import { useCart } from "@/utils/hooks/useCart";
 import { Box, Typography } from "@mui/material";
 
 export const OrderDetails = () => {

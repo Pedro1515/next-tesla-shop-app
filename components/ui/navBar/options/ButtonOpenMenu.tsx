@@ -1,6 +1,6 @@
 import { IconButton } from "@mui/material";
 import { SearchOutlined } from "@mui/icons-material";
-import { useUi } from "@/hooks/useUi";
+import { useUi } from "@/utils/hooks/useUi";
 
 export const ButtonOpenMenu = () => {
     const { toggleSideMenu } = useUi();

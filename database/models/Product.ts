@@ -1,5 +1,5 @@
 import { IProduct } from "@/interfaces";
-import mongoose, { Model, Schema } from "mongoose";
+import { model, Model, models, Schema } from "mongoose";
 
 export interface IProductModel extends IProduct {}
 
@@ -45,6 +45,6 @@ const ProductSchema = new Schema(
 ProductSchema.index({ title: "text", tags: "text" });
 
 const ProductModel: Model<IProductModel> =
-    mongoose.models.Product || mongoose.model("Product", ProductSchema);
+    models.Product || model("Product", ProductSchema);
 
 export default ProductModel;
