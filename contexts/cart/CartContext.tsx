@@ -3,6 +3,7 @@ import { createContext } from "react";
 
 interface CartContextProps {
     cart: ICartProduct[];
+    isLoading: boolean;
     addProduct: (product: ICartProduct) => void;
 }
 

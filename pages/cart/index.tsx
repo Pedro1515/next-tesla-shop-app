@@ -6,9 +6,9 @@ import { EmptyLayout } from "@/components/layouts";
 import { RemoveShoppingCartOutlined } from "@mui/icons-material";
 
 export const CardPage = () => {
-    const { cart } = useCart();
+    const { cart, isLoading } = useCart();
 
-    if (cart.length === 0) {
+    if (cart.length === 0 && !isLoading) {
         return (
             <EmptyLayout
                 pageTitle="Carrito vacío"
@@ -21,7 +21,9 @@ export const CardPage = () => {
 
     return (
         <ShopLayout
-            pageTitle={`Carrito - ${cart.length} artículos`}
+            pageTitle={`Carrito${
+                isLoading ? "" : " - " + cart.length + " artículos"
+            }`}
             pageDescription="Carrito de compras de la tienda"
             maxWidth={{
                 sm: 550,
@@ -34,13 +36,17 @@ export const CardPage = () => {
                     margin: { sm: "auto", md: "auto", lg: "none" },
                 }}
             >
-                <Grid item xs={12}>
-                    <Typography variant="h1" component="h1" pb={5}>
-                        Carrito
-                    </Typography>
-                </Grid>
-                <CartList />
-                <OrderSummaryCard title="Orden" />
+                {!isLoading && (
+                    <>
+                        <Grid item xs={12}>
+                            <Typography variant="h1" component="h1" pb={5}>
+                                Carrito
+                            </Typography>
+                        </Grid>
+                        <CartList />
+                        <OrderSummaryCard title="Orden" />
+                    </>
+                )}
             </Grid>
         </ShopLayout>
     );

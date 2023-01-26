@@ -3,11 +3,12 @@ import { CartStateProps } from "./CartProvider";
 
 type CartActionTypes =
     | {
-          type: "[Cart] - Load cart from cookies | storage";
+          type: "[Cart] - Replace cart";
           payload: ICartProduct[];
       }
     | { type: "[Cart] - Add product"; payload: ICartProduct }
-    | { type: "[Cart] - Remove product"; payload: ICartProduct };
+    | { type: "[Cart] - Remove product"; payload: ICartProduct }
+    | { type: "[Cart] - Update isLoading"; payload: boolean };
 
 export const cartReducer = (
     state: CartStateProps,
@@ -22,6 +23,19 @@ export const cartReducer = (
                     action.payload,
                 ],
             };
+
+        case "[Cart] - Replace cart":
+            return {
+                ...state,
+                cart: action.payload,
+            };
+
+        case "[Cart] - Update isLoading":
+            return {
+                ...state,
+                isLoading: action.payload,
+            };
+
         default:
             return state;
     }
