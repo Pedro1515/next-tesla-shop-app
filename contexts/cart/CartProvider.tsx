@@ -1,7 +1,15 @@
 import { ICartProduct } from "@/interfaces";
-import { FC, PropsWithChildren, useEffect, useReducer, useState } from "react";
+import {
+    FC,
+    PropsWithChildren,
+    useEffect,
+    useMemo,
+    useReducer,
+    useState,
+} from "react";
 import { CartContext, cartReducer } from "./";
 import Cookie from "js-cookie";
+import { multiplyArray } from "@/utils/multiplyArray";
 
 export interface CartStateProps {
     cart: ICartProduct[];
@@ -16,6 +24,11 @@ const INITIAL_STATE: CartStateProps = {
 export const CartProvider: FC<PropsWithChildren> = ({ children }) => {
     const [state, dispatch] = useReducer(cartReducer, INITIAL_STATE);
     const [initialized, setInitialized] = useState(false);
+
+    const cartTotal = useMemo(
+        () => multiplyArray(state.cart.map((p) => p.quantity)),
+        [state.cart]
+    );
 
     const addProduct = (product: ICartProduct) => {
         const productInCart = state.cart.find(
@@ -33,6 +46,13 @@ export const CartProvider: FC<PropsWithChildren> = ({ children }) => {
         });
     };
 
+    const updateProduct = (product: ICartProduct) => {
+        dispatch({
+            type: "[Cart] - Add product",
+            payload: product,
+        });
+    };
+
     const replaceCart = (cart: ICartProduct[]) => {
         dispatch({
             type: "[Cart] - Replace cart",
@@ -45,6 +65,13 @@ export const CartProvider: FC<PropsWithChildren> = ({ children }) => {
         dispatch({
             type: "[Cart] - Update isLoading",
             payload: boolean,
+        });
+    };
+
+    const removeProduct = (product: ICartProduct) => {
+        dispatch({
+            type: "[Cart] - Remove product",
+            payload: product,
         });
     };
 
@@ -69,6 +96,9 @@ export const CartProvider: FC<PropsWithChildren> = ({ children }) => {
                 cart: state.cart,
                 isLoading: state.isLoading,
                 addProduct,
+                cartTotal,
+                updateProduct,
+                removeProduct,
             }}
         >
             {children}

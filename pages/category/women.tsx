@@ -1,5 +1,5 @@
 import { Typography } from "@mui/material";
-import { useProducts } from "@/hooks";
+import { useProducts } from "@/utils/hooks";
 
 import { ShopLayout } from "components/layouts/ShopLayout";
 import { ProductList } from "components/products/ProductList";

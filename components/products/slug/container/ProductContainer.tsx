@@ -4,7 +4,7 @@ import { useState } from "react";
 import { ProductHeading } from "./ProductHeading";
 import { ProductDetails } from "./ProductDetails";
 import { ProductInfo } from "./ProductInfo";
-import { useCart } from "@/hooks/useCart";
+import { useCart } from "@/utils/hooks/useCart";
 
 interface Props {
     product: IProduct;

@@ -16,7 +16,7 @@ import {
 } from "@mui/material";
 import React from "react";
 import { useRouter } from "next/router";
-import { useUi } from "../../../hooks/useUi";
+import { useUi } from "../../../utils/hooks/useUi";
 
 export const MenuCategories = () => {
     const { toggleSideMenu } = useUi();
