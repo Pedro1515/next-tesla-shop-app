@@ -2,7 +2,7 @@ import { db } from ".";
 import ProductModel from "./models/Product";
 import { IProduct } from "../interfaces/product";
 
-export const dbProducts = async (slug: string) => {
+export const dbProductBySlug = async (slug: string) => {
     await db.connect();
     const product = await ProductModel.findOne({ slug }).lean();
     await db.disconnect();
@@ -19,7 +19,7 @@ export const dbProducts = async (slug: string) => {
     return product ? { ...product, ...propertiesParsed } : null;
 };
 
-export const dbProdunctsSlugs = async (): Promise<{ slug: string }[]> => {
+export const dbProductSlugs = async (): Promise<{ slug: string }[]> => {
     await db.connect();
     const slugs = await ProductModel.find().select("slug -_id").lean();
     await db.disconnect();
@@ -34,6 +34,18 @@ export const dbProductsByTerm = async (q: string): Promise<IProduct[]> => {
     const products = await ProductModel.find({
         $text: { $search: q },
     })
+        .select("title price sizes images inStock slug -_id ")
+        .lean();
+
+    await db.disconnect();
+
+    return products || [];
+};
+
+export const dbProducts = async (): Promise<IProduct[]> => {
+
+    await db.connect();
+    const products = await ProductModel.find()
         .select("title price sizes images inStock slug -_id ")
         .lean();
 

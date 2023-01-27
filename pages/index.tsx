@@ -1,18 +1,21 @@
-import { Typography } from "@mui/material";
-import { useProducts } from "@/utils/hooks";
+import { GetServerSideProps } from "next";
 
+import { Typography } from "@mui/material";
+import { dbProducts, dbProductsByTerm } from "@/database/dbProducts";
+import { useProducts } from "@/utils/hooks";
 import { ShopLayout } from "components/layouts/ShopLayout";
 import { ProductList } from "components/products/ProductList";
+import { IProduct } from "@/interfaces";
 
-// interface Props {
-//     products?: IProduct[];
-// }
+interface Props {
+    products: IProduct[];
+}
 
-export default function Home() {
-    const { isError, isLoading, products } = useProducts("/products");
+export default function Home({ products }: Props) {
+    // const { isError, isLoading, products } = useProducts("/products");
 
-    if (isLoading) return <div>Loading...</div>;
-    if (isError) return <div>Error...</div>;
+    // if (isLoading) return <div>Loading...</div>;
+    // if (isError) return <div>Error...</div>;
 
     return (
         <ShopLayout
@@ -30,3 +33,13 @@ export default function Home() {
         </ShopLayout>
     );
 }
+
+export const getServerSideProps: GetServerSideProps = async () => {
+    const products = await dbProducts();
+
+    return {
+        props: {
+            products: products || [],
+        },
+    };
+};

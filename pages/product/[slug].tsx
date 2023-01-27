@@ -3,10 +3,10 @@ import { GetStaticPaths, GetStaticProps } from "next";
 
 import { Grid } from "@mui/material";
 import { ShopLayout } from "components/layouts/ShopLayout";
-import { dbProducts, dbProdunctsSlugs } from "@/database/dbProducts";
 import { ParsedUrlQuery } from "querystring";
 import { ProductContainer, ProductSlideshow } from "@/components/products";
 import { IProduct } from "@/interfaces";
+import { dbProductBySlug, dbProductSlugs } from "@/database/dbProducts";
 
 interface Props {
     product: IProduct | null;
@@ -29,7 +29,7 @@ const ProductPage = ({ product }: Props) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-    const slugs = await dbProdunctsSlugs();
+    const slugs = await dbProductSlugs();
 
     const paths = slugs.map((slug) => ({
         params: slug,
@@ -43,7 +43,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
     const { slug = "" } = params as ParsedUrlQuery;
-    const product = await dbProducts(slug as string);
+    const product = await dbProductBySlug(slug as string);
 
     if (!product) {
         return {
