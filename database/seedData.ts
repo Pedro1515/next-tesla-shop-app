@@ -1,3 +1,6 @@
+import { IUserRole } from "@/interfaces";
+import bcrypt from "bcryptjs";
+
 interface SeedProduct {
     description: string;
     images: string[];
@@ -14,11 +17,33 @@ interface SeedProduct {
 type ValidSizes = "XS" | "S" | "M" | "L" | "XL" | "XXL" | "XXXL";
 type ValidTypes = "shirts" | "pants" | "hoodies" | "hats";
 
+interface SeedUser {
+    name: string;
+    email: string;
+    password?: string;
+    role: IUserRole;
+}
+
 interface SeedData {
     products: SeedProduct[];
+    users: SeedUser[];
 }
 
 export const seedData: SeedData = {
+    users: [
+        {
+            name: "Pedro Moran",
+            email: "pedromoran@gmail.com",
+            password: bcrypt.hashSync("123456"),
+            role: "admin",
+        },
+        {
+            name: "Adam Smith",
+            email: "biwohy@lyricspad.com",
+            password: bcrypt.hashSync("123456"),
+            role: "client",
+        },
+    ],
     products: [
         {
             description:
