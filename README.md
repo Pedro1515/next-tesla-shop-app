@@ -2,26 +2,6 @@
 
 ## Getting Started
 
-### Setting Environment Variables
-
-You can go to the **.env.example** file, copy the environment variables and set them in a new **.env** file.
-
--   MONGODB_URL
-
-    The same port as the one in the docker-compose.yml file. By default it will be **27017**.
-
-```
-MONGODB_URL=mongodb://localhost:27017/entriesdb
-```
-
--   JWT_SECRET
-
-    It could be like this one:
-
-```
-JWT_SECRET=MyS3cr3tK3YOfJWT23RTe0sL4sH0p
-```
-
 ### Running Mongo Database
 
 ```bash
@@ -34,6 +14,24 @@ docker-compose up -d
 
 ```
 mongodb://localhost:27017/entriesdb
+```
+
+### Setting Environment Variables
+
+You can go to the **.env.example** file, copy the environment variables and set them in a new **.env** file.
+
+-   MONGODB_URL
+
+```
+MONGODB_URL=mongodb://localhost:27017/entriesdb
+```
+
+-   JWT_SECRET
+
+    It could be like this one:
+
+```
+JWT_SECRET=MyS3cr3tK3YOfJWT23RTe0sL4sH0p
 ```
 
 ### Configure Environments
