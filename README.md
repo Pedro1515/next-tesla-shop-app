@@ -55,8 +55,8 @@ yarn dev
 -   Building And Running Image With Docker:
 
 ```bash
-docker build -t openjira-image .
-docker run --name=openjira-container -p 3000:3000 openjira-image
+docker build -t teslashop-image .
+docker run --name=openjira-container -p 3000:3000 teslashop-image
 ```
 
 ### Populate Database With Test Information By Running:
