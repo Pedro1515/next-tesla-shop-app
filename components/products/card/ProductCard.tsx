@@ -1,34 +1,24 @@
 import { useState } from "react";
-import Link from "next/link";
 
-import {
-    Grid,
-    CardActionArea,
-    CardMedia,
-    Box,
-    Typography,
-    Chip,
-} from "@mui/material";
+import { Grid, Box, Typography, Chip } from "@mui/material";
 
 import { IProduct } from "@/interfaces";
 import { BoxAddToCart } from "./BoxAddToCart";
+import { CardImage } from "./CardImage";
 
 interface Props {
     product: IProduct;
+    index: number;
 }
 
-export const ProductCard = ({ product }: Props) => {
+export const ProductCard = ({ product, index }: Props) => {
     const [isHover, setIsHover] = useState(false);
 
-    const productImage = isHover
-        ? "/products/" + product.images[1]
-        : "/products/" + product.images[0];
-
-    const radius = "3px";
+    const radius = 3;
     const outOfStock = !product.inStock;
 
     return (
-        <Grid item xs={12} sm={6} md={4} key={product.slug}>
+        <Grid item xs={12} sm={6} md={4}>
             <Box
                 position="relative"
                 borderRadius={radius}
@@ -45,29 +35,24 @@ export const ProductCard = ({ product }: Props) => {
                             opacity: 0.8,
                             top: 0,
                             left: 0,
-                            zIndex: 1,
+                            zIndex: 2,
                         }}
                     />
                 )}
-
-                <Link
-                    href={`/product/${product.slug}`}
-                    prefetch={false}
-                    legacyBehavior
-                >
-                    <CardActionArea sx={{ borderRadius: radius }}>
-                        <CardMedia
-                            component="img"
-                            image={productImage}
-                            alt={product.title}
-                            sx={{
-                                borderRadius: radius,
-                            }}
-                        />
-                    </CardActionArea>
-                </Link>
+                <CardImage
+                    images={product.images}
+                    title={product.title}
+                    isHover={isHover}
+                    index={index}
+                    radius={radius}
+                    slug={product.slug}
+                />
                 {isHover && (
-                    <BoxAddToCart product={product} outOfStock={outOfStock} />
+                    <BoxAddToCart
+                        radius={radius}
+                        product={product}
+                        outOfStock={outOfStock}
+                    />
                 )}
             </Box>
             <Box sx={{ mt: 1 }}>
