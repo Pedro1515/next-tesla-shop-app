@@ -37,12 +37,10 @@ export const BoxAddToCart = ({ product, outOfStock }: Props) => {
             <NextLink href={`/product/${product.slug}`} legacyBehavior passHref>
                 <Link
                     underline="none"
-                    sx={{
-                        ...boxStyles,
-                        fontSize: { sx: 14, md: 16, lg: 18, xl: 20 },
-                    }}
+                    sx={boxStyles}
                     variant="h6"
                     fontWeight={600}
+                    fontSize={{ xs: 16, lg: 20 }}
                     textAlign="center"
                 >
                     Ver Detalles
@@ -66,7 +64,7 @@ export const BoxAddToCart = ({ product, outOfStock }: Props) => {
                         component="p"
                         textAlign="center"
                         mb="1.5%"
-                        sx={{ fontSize: { xs: 14, md: 16, lg: 18, xl: 20 } }}
+                        fontSize={{ xs: 16, lg: 20 }}
                     >
                         Selecciona Tu Talla
                     </Typography>
@@ -78,7 +76,7 @@ export const BoxAddToCart = ({ product, outOfStock }: Props) => {
                     fontWeight={600}
                     component="p"
                     textAlign="center"
-                    sx={{ fontSize: { xs: 14, md: 16, lg: 18, xl: 20 } }}
+                    fontSize={{ xs: 16, lg: 20 }}
                 >
                     Agregar Directamente +
                 </Typography>
