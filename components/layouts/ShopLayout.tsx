@@ -43,7 +43,7 @@ export const ShopLayout = ({
                     margin: "0 auto",
                     width: "100%",
                     maxWidth: maxWidth ? maxWidth : "1400px",
-                    padding: "80px 20px",
+                    padding: "80px 40px",
                     flexGrow: 1,
                 }}
                 component="main"

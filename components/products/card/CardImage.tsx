@@ -34,8 +34,8 @@ export const CardImage = ({
                             src={"/products/" + images[0]}
                             alt={title}
                             priority={index < 6}
-                            width={1000}
-                            height={1000}
+                            width={650}
+                            height={650}
                             style={{
                                 width: "100%",
                                 height: "100%",
@@ -45,8 +45,8 @@ export const CardImage = ({
                         <Image
                             src={"/products/" + images[1]}
                             alt={title}
-                            width={1000}
-                            height={1000}
+                            width={650}
+                            height={650}
                             style={{
                                 width: "100%",
                                 height: "100%",

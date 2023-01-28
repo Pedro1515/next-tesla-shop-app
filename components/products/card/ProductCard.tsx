@@ -18,7 +18,7 @@ export const ProductCard = ({ product, index }: Props) => {
     const outOfStock = !product.inStock;
 
     return (
-        <Grid item xs={12} sm={6} md={4}>
+        <Grid item xs={12} sm={6} md={4} marginTop={5}>
             <Box
                 position="relative"
                 borderRadius={radius}

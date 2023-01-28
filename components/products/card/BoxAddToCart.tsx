@@ -1,5 +1,5 @@
 import { IProduct } from "@/interfaces";
-import { Box } from "@mui/material";
+import { Box, Card, Typography } from "@mui/material";
 import { useState } from "react";
 import { SizeSelector } from "../sizeSelector/SizeSelector";
 
@@ -16,50 +16,71 @@ export const BoxAddToCart = ({ product, outOfStock, radius }: Props) => {
     const [isHover, setIsHover] = useState(false);
 
     const boxStyles = {
-        height: 70,
+        height: { md: "28%", lg: "25%", xl: "20%" },
         position: "absolute",
         zIndex: 2,
         bottom: 0,
-        borderRadius: `0 0 ${radius}px ${radius}px`,
-        backgroundColor: "primary.main",
-        ":hover": {
-            backgroundColor: outOfStock ? "primary.dark" : "primary.main",
-        },
+        borderRadius: 0,
+        backgroundColor: "secondary.main",
         boxShadow: "0 8px 16px 0 rgba(0,0,0,.16)",
         width: "100%",
-        color: "white",
         display: {
             xs: "none",
             md: "flex",
         },
-        fontweight: 600,
         justifyContent: "center",
         alignItems: "center",
-        fontSize: 14,
     };
 
     if (outOfStock) {
         return (
             <NextLink href={`/product/${product.slug}`} legacyBehavior passHref>
-                <Link underline="none" sx={boxStyles}>
+                <Link
+                    underline="none"
+                    sx={boxStyles}
+                    variant="h6"
+                    fontWeight={600}
+                >
                     Ver Detalles
                 </Link>
             </NextLink>
         );
     }
-
     return (
-        <Box
-            color="primary"
-            sx={boxStyles}
+        <Card
+            sx={{
+                ...boxStyles,
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "stretch",
+            }}
             onMouseEnter={() => setIsHover(true)}
             onMouseLeave={() => setIsHover(false)}
         >
             {isHover ? (
-                <SizeSelector variant="slim" sizes={product.sizes} />
+                <Box>
+                    <Typography
+                        variant="h6"
+                        fontWeight={600}
+                        component="p"
+                        textAlign="center"
+                        mb={1}
+                    >
+                        Selecciona Tu Talla
+                    </Typography>
+                    <SizeSelector variant="slim" sizes={product.sizes} />
+                </Box>
             ) : (
-                "Agregar al carrito +"
+                <Typography
+                    variant="h6"
+                    fontWeight={600}
+                    component="p"
+                    textAlign="center"
+                >
+                    Agregar Directamente +
+                </Typography>
             )}
-        </Box>
+        </Card>
     );
 };

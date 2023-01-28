@@ -17,18 +17,12 @@ export const ButtonSlim = ({ label, active, onClick }: ButtonVariantProps) => (
         <Typography
             sx={{
                 flexGrow: 1,
-                // ":hover": {
-                //     backgroundColor: "primary.light",
-                // },
                 borderBottom: active
-                    ? "1px solid #fff"
+                    ? "1px solid #000"
                     : "1px solid transparent",
             }}
             padding="2px 0"
             component="span"
-            color="#fff"
-            fontWeight={600}
-            fontSize={12}
         >
             {label}
         </Typography>

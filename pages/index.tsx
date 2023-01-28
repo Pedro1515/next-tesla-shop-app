@@ -21,6 +21,7 @@ export default function Home({ products }: Props) {
         <ShopLayout
             pageTitle="Tesla | Shop - Home"
             pageDescription="Encuentra los mejores productos de Tesla en un solo lugar."
+            maxWidth={2000}
         >
             <Typography variant="h1" component="h1">
                 Tienda
