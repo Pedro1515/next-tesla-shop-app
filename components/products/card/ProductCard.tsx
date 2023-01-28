@@ -14,14 +14,12 @@ interface Props {
 export const ProductCard = ({ product, index }: Props) => {
     const [isHover, setIsHover] = useState(false);
 
-    const radius = 3;
     const outOfStock = !product.inStock;
 
     return (
         <Grid item xs={12} sm={6} md={4} marginTop={5}>
             <Box
                 position="relative"
-                borderRadius={radius}
                 onMouseEnter={() => setIsHover(true)}
                 onMouseLeave={() => setIsHover(false)}
             >
@@ -44,15 +42,10 @@ export const ProductCard = ({ product, index }: Props) => {
                     title={product.title}
                     isHover={isHover}
                     index={index}
-                    radius={radius}
                     slug={product.slug}
                 />
                 {isHover && (
-                    <BoxAddToCart
-                        radius={radius}
-                        product={product}
-                        outOfStock={outOfStock}
-                    />
+                    <BoxAddToCart product={product} outOfStock={outOfStock} />
                 )}
             </Box>
             <Box sx={{ mt: 1 }}>

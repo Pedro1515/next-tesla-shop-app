@@ -9,10 +9,9 @@ import Link from "@mui/material/Link";
 interface Props {
     product: IProduct;
     outOfStock: boolean;
-    radius: number;
 }
 
-export const BoxAddToCart = ({ product, outOfStock, radius }: Props) => {
+export const BoxAddToCart = ({ product, outOfStock }: Props) => {
     const [isHover, setIsHover] = useState(false);
 
     const boxStyles = {
@@ -29,7 +28,8 @@ export const BoxAddToCart = ({ product, outOfStock, radius }: Props) => {
             md: "flex",
         },
         justifyContent: "center",
-        alignItems: "center",
+        flexDirection: "column",
+        alignItems: "stretch",
     };
 
     if (outOfStock) {
@@ -37,9 +37,13 @@ export const BoxAddToCart = ({ product, outOfStock, radius }: Props) => {
             <NextLink href={`/product/${product.slug}`} legacyBehavior passHref>
                 <Link
                     underline="none"
-                    sx={boxStyles}
+                    sx={{
+                        ...boxStyles,
+                        fontSize: { sx: 14, md: 16, lg: 18, xl: 20 },
+                    }}
                     variant="h6"
                     fontWeight={600}
+                    textAlign="center"
                 >
                     Ver Detalles
                 </Link>
@@ -50,10 +54,6 @@ export const BoxAddToCart = ({ product, outOfStock, radius }: Props) => {
         <Card
             sx={{
                 ...boxStyles,
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                alignItems: "stretch",
             }}
             onMouseEnter={() => setIsHover(true)}
             onMouseLeave={() => setIsHover(false)}
@@ -65,7 +65,8 @@ export const BoxAddToCart = ({ product, outOfStock, radius }: Props) => {
                         fontWeight={600}
                         component="p"
                         textAlign="center"
-                        mb={1}
+                        mb="1.5%"
+                        sx={{ fontSize: { xs: 14, md: 16, lg: 18, xl: 20 } }}
                     >
                         Selecciona Tu Talla
                     </Typography>
@@ -77,6 +78,7 @@ export const BoxAddToCart = ({ product, outOfStock, radius }: Props) => {
                     fontWeight={600}
                     component="p"
                     textAlign="center"
+                    sx={{ fontSize: { xs: 14, md: 16, lg: 18, xl: 20 } }}
                 >
                     Agregar Directamente +
                 </Typography>

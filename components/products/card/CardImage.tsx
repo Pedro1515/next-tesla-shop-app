@@ -9,17 +9,9 @@ interface Props {
     isHover: boolean;
     index: number;
     slug: string;
-    radius: number;
 }
 
-export const CardImage = ({
-    images,
-    title,
-    isHover,
-    index,
-    slug,
-    radius,
-}: Props) => {
+export const CardImage = ({ images, title, isHover, index, slug }: Props) => {
     return (
         <>
             <NextLink
@@ -39,7 +31,7 @@ export const CardImage = ({
                             style={{
                                 width: "100%",
                                 height: "100%",
-                                borderRadius: `${radius}px`,
+                                borderRadius: `2px`,
                             }}
                         />
                         <Image
@@ -54,7 +46,7 @@ export const CardImage = ({
                                 top: 0,
                                 left: 0,
                                 zIndex: 1,
-                                borderRadius: `${radius}px`,
+                                borderRadius: `2px`,
                                 display: isHover ? "block" : "none",
                             }}
                         />
