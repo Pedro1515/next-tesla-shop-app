@@ -1,8 +1,7 @@
 import { GetServerSideProps } from "next";
 
 import { Typography } from "@mui/material";
-import { dbProducts, dbProductsByTerm } from "@/database/dbProducts";
-import { useProducts } from "@/utils/hooks";
+import { dbProducts } from "@/database/dbProducts";
 import { ShopLayout } from "components/layouts/ShopLayout";
 import { ProductList } from "components/products/ProductList";
 import { IProduct } from "@/interfaces";

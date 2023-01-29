@@ -1,10 +1,7 @@
 import { Typography, Grid } from "@mui/material";
 
 import { ShopLayout } from "@/components/layouts/ShopLayout";
-import { CartList } from "@/components/cart";
 import { OrderSummaryCard } from "@/components/cart/orderSummaryCard/OrderSummaryCard";
-import { IProduct } from "@/interfaces";
-import { seedData } from "@/database";
 
 interface Props {}
 
