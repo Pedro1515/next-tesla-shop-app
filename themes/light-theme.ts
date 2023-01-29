@@ -106,7 +106,7 @@ export const lightTheme = createTheme({
 
         MuiTextField: {
             defaultProps: {
-                size: "small",
+                // size: "small",
                 variant: "filled",
                 fullWidth: true,
             },
