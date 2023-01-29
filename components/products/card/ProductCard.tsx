@@ -34,6 +34,7 @@ export const ProductCard = ({ product, index }: Props) => {
                             top: 0,
                             left: 0,
                             zIndex: 2,
+                            borderRadius: "2px",
                         }}
                     />
                 )}

@@ -1,8 +1,7 @@
 import { db } from "@/database";
 import UserModel from "@/database/models/User";
 import type { NextApiRequest, NextApiResponse } from "next";
-import bcrypt from "bcryptjs";
-import { signToken } from "@/utils";
+import { isValidToken } from "@/utils";
 
 type Data =
     | { message: string }
@@ -33,24 +32,24 @@ export const checkJWT = async (
 ) => {
     const { token = "" } = req.cookies;
 
+    let userId = "";
+
+    try {
+        userId = (await isValidToken(token))._id;
+    } catch (error) {
+        return res.status(401).json({ message: "Invalid token" });
+    }
+
     await db.connect();
-    // const user = await UserModel.findOne({ email });
+    const user = await UserModel.findById(userId);
     await db.disconnect();
 
-    // if (!user) {
-    //     return res.status(404).json({ message: "Email no found" });
-    // }
+    if (!user) {
+        return res.status(404).json({ message: "Email no found" });
+    }
 
-    // if (!bcrypt.compareSync(password, user.password!)) {
-    //     return res.status(401).json({ message: "Invalid password" });
-    // }
-
-    // const { role, name, _id } = user;
-
-    // const token = signToken({ _id, email });
-
-    // return res.status(200).json({
-    //     token,
-    //     user: { email, name, role },
-    // });
+    return res.status(200).json({
+        token,
+        user,
+    });
 };
