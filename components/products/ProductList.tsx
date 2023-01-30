@@ -9,7 +9,7 @@ interface Props {
 
 export const ProductList = ({ products }: Props) => {
     return (
-        <Grid container spacing={{ md: 6, lg: 8 }}>
+        <Grid container spacing={{ sm: 4, md: 6, lg: 8 }}>
             {products.map((product, index) => (
                 <ProductCard
                     key={product.slug}
