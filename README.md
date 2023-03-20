@@ -1,7 +1,5 @@
 # Tesla Shop
 
-## [Live Demo](https://teslashop.up.railway.app/)
-
 ## Getting Started
 
 ### Running Mongo Database
